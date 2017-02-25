@@ -1,0 +1,171 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:id="@+id/layout"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              tools:context=".MainActivity"
+              android:background="#003c6f">
+
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="75px"-->
+        <!--android:textSize="30dp"-->
+        <!--android:gravity="center"-->
+        <!--android:textColor="#ffffff"-->
+        <!--android:background="#003c6f"-->
+        <!--android:text="Washburn U. Map App"-->
+        <!--android:layout_marginBottom="1dp"-->
+        <!--android:id="@+id/main_text"/>-->
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        >
+        <!--android:adjustViewBounds="true"/>-->
+        <ImageButton
+            android:layout_width="75px"
+            android:layout_height="fill_parent"
+            android:id="@+id/imageButton"
+            android:src="@drawable/hamburger_icon"
+            android:scaleType="fitCenter"
+            android:background="#003c6f"
+            android:layout_gravity="center" android:padding="20px"/>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/textView"
+            android:textSize="10sp"
+            android:padding="10dp"
+            android:textColor="#ffffff"
+            android:background="#003c6f"
+            android:text="Welcome to the Washburn University Map App.  Touch a building to see its name.  Use the buttons at the bottom to select buildings, dpeartments, etc."
+            android:textAlignment="center" android:gravity="center_vertical|center_horizontal"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" android:layout_weight="2">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:id="@+id/dummyView"
+            android:background="#003c6f"
+            android:layout_weight="1">
+        </LinearLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imgV1" android:visibility="visible"/>
+
+    </RelativeLayout>
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp" android:shrinkColumns="0,1,2,3"
+        android:background="#003c6f" android:showDividers="middle|end">
+
+    <!--<TableLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="45dp" android:shrinkColumns="0,1,2,3"-->
+        <!--android:background="#A3DDE2" android:showDividers="middle|end"-->
+        <!-->-->
+        <!--<TableRow-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent" android:layout_gravity="center"-->
+            <!--android:gravity="center">-->
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="10dp"
+                android:text="New Text"
+                android:id="@+id/myLocationText" android:background="#003c6f"
+                android:textColor="#ffffff"
+                android:gravity="center_horizontal" android:layout_gravity="center"
+                android:visibility="gone"/>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="45dp" android:gravity="center|bottom"
+            android:showDividers="beginning|middle|end" android:focusable="false"
+            android:background="#003c6f" android:visibility="visible">
+            <ImageButton
+                android:id="@+id/bldgButton" android:textSize="15sp" android:layout_span="1"
+                android:background="#003c6f" android:textColor="#ffffff"
+
+                android:src="@drawable/buildings_1"
+                android:layout_width="80dp"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="false" android:layout_height="fill_parent"
+                android:layout_gravity="bottom|top" android:padding="10dp"
+                android:layout_weight="1" android:cropToPadding="false"/>
+
+            <ImageButton
+                android:id="@+id/deptButton" android:textSize="15sp" android:layout_span="1"
+                android:background="#003c6f" android:textColor="#ffffff"
+
+                android:src="@drawable/books_1"
+                android:layout_width="80dp"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="false" android:layout_height="fill_parent"
+                android:layout_gravity="bottom|top" android:padding="10dp"
+                android:layout_weight="1" android:cropToPadding="false"/>
+
+            <ImageButton
+                android:id="@+id/serveButton" android:textSize="15sp" android:layout_span="1"
+                android:background="#003c6f" android:textColor="#ffffff"
+
+                android:src="@drawable/help_desk_2"
+                android:layout_width="80dp"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="false" android:layout_height="fill_parent"
+                android:layout_gravity="bottom|top" android:padding="10dp"
+                android:layout_weight="1" android:cropToPadding="false"/>
+
+            <ImageButton
+                android:id="@+id/dotBut" android:textSize="15sp" android:layout_span="1"
+                android:background="#003c6f" android:textColor="#ffffff"
+
+                android:src="@drawable/gears_1"
+                android:layout_width="80dp"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="false" android:layout_height="fill_parent"
+                android:layout_gravity="bottom|top" android:padding="10dp"
+                android:layout_weight="1" android:cropToPadding="false"/>
+        </TableRow>
+        <!--</TableRow>-->
+        <!--<TableRow-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="fill_parent" android:gravity="center|bottom"-->
+            <!--android:showDividers="beginning|middle|end">-->
+            <!--<Button-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="fill_parent"-->
+                <!--android:text="Bldgs."-->
+                <!--android:id="@+id/bldgButton" android:textSize="15sp"-->
+                <!--android:layout_span="1" android:layout_weight="1"/>-->
+            <!--<Button-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="fill_parent"-->
+                <!--android:text="Deprt."-->
+                <!--android:id="@+id/deptButton" android:textSize="15sp" android:layout_span="1"-->
+                <!--android:layout_weight="1"/>-->
+            <!--<Button-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="fill_parent"-->
+                <!--android:text="Serv."-->
+                <!--android:id="@+id/serveButton" android:layout_span="1" android:layout_weight="1"/>-->
+            <!--<Button-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="fill_parent"-->
+                <!--android:text="test"-->
+                <!--android:id="@+id/dotBut" android:layout_span="1" android:layout_weight="1"/>-->
+        <!--</TableRow>-->
+    </TableLayout>
+
+        <!--<TableRow-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" android:layout_gravity="center"-->
+        <!--android:gravity="center">-->
+        <!--</TableRow>-->
+</LinearLayout>

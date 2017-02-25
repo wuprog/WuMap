@@ -1,0 +1,126 @@
+<resources>
+    <string name="app_name">WUMap_NOV_15</string>
+    <string name="soft_dark_blue">#4175aa</string>
+    <string-array name="bldg_names">
+        <item>Art Building (AB)</item>
+        <item>Bennett Hall (BT)</item>
+        <item>Benton Hall (BE)</item>
+        <item>Carnegie Hall</item>
+        <item>Garvey</item>
+        <item>Henderson Commons (HC)</item>
+        <item>KBI Building</item>
+        <item>Law School ()</item>
+        <item>Lee Arena</item>
+        <item>Memorial Union</item>
+        <item>Morgan Hall (MO)</item>
+        <item>Petro</item>
+        <item>Stoffer Hall (ST)</item>
+        <item>Yager Stadium</item>
+    </string-array>
+    <string-array name="bldg_desc">
+        <item>The Art Building (AB) - The Art Department is located in the Art Building.</item>
+        <item>Bennett Hall (BT) - Information Technology Services is located in Bennett Hall. Need to reset your password?  Visit BT104.</item>
+        <item>Benton Hall (BE) - Home to the School of Applied Studies which includes Criminal Justice and Social Work.</item>
+        <item>Carnegie Hall - </item>
+        <item>Henderson Commons (HC) - Home to the School of Business as well as History, Political Science, Psychology and Sociology/Anthropology.</item>
+        <item>Garvey - Home of the Theatre and Music Departments.</item>
+        <item>KBI Building - Kansas Bureau of Investigation</item>
+        <item>Law Building - Home to the School of Law.</item>
+        <item>Lee Arena - </item>
+        <item>The Memorial Union - A great place to study or relax, and get some food.</item>
+        <item>Morgan Hall (MO) - The home to Math and English as well as the president\'s office, the various Dean\'s Offices, and many other administrative offices.</item>
+        <item>Petro</item>
+        <item>Stoffer Hall (ST) - Home to Biology, Chemistry, Computer Information Sciences and Physics.</item>
+        <item>Yager Stadium - The football and soccer fields.</item>
+    </string-array>
+    <string-array name="bldg_x">
+        <item>.51904f</item>
+        <item>.69328f</item>
+        <item>.36358f</item>
+        <item>.67000f</item>
+        <item>.37899f</item>
+        <item>.46000f</item>
+        <item>.88500f</item>
+        <item>.17928f</item>
+        <item>.75000f</item>
+        <item>.45270f</item>
+        <item>.54290f</item>
+        <item>.75500f</item>
+        <item>.78308f</item>
+        <item>.57900f</item>
+    </string-array>
+    <string-array name="bldg_y">
+        <item>.61538f</item>
+        <item>.20090f</item>
+        <item>.38483f</item>
+        <item>.29000f</item>
+        <item>.47031f</item>
+        <item>.15000f</item>
+        <item>.62000f</item>
+        <item>.24490f</item>
+        <item>.48000f</item>
+        <item>.28000f</item>
+        <item>.18010f</item>
+        <item>.40000f</item>
+        <item>.16317f</item>
+        <item>.48500f</item>
+    </string-array>
+    <string-array name="dept_names">
+        <item>Allied Health</item>
+        <item>Art (AR)</item>
+        <item>Biology (BI)</item>
+        <item>Chemistry (CH)</item>
+        <item>Communication Studies</item>
+        <item>Computer Information Sciences (CIS)</item>
+        <item>Criminal Justice (CJ)</item>
+        <item>Education (ED)</item>
+        <item>English (EN)</item>
+        <item>History (HI)</item>
+        <item>Human Services</item>
+        <item>Kinesiology</item>
+        <item>Mass Media</item>
+        <item>Mathematics (MA)</item>
+        <item>Modern Languages</item>
+        <item>Music</item>
+        <item>Philosophy and Religious Studies</item>
+        <item>Physics and Astronomy</item>
+        <item>Political Science and Public Administration</item>
+        <item>Psychology</item>
+        <item>Social Work</item>
+        <item>Sociology/Anthropology (SO/AN)</item>
+        <item>Theatre</item>
+    </string-array>
+    <string-array name="dept_desc">
+        <item>The Allied Health Department is located in room 107 of Benton 107.</item>
+        <item>The Art Department is located in the Art Building.  Stop by sometime and see works by students and faculty on display here.</item>
+        <item>The Biology Department is located in room 202 of Stoffer Hall.</item>
+        <item>The Chemistry Department is located in room 312 of Stoffer Hall.</item>
+        <item>The Communication Department is located in room 206 of Morgan.</item>
+        <item>The CIS Department is located in room 304 of Stoffer Hall.</item>
+        <item>The Criminal Justice Department is located in Benton 201.</item>
+        <item>The Education Department is located in room 202 of Carnegie.</item>
+        <item>The English Department is located in room 237 of Morgan.</item>
+        <item>The History Department is located in room 211 of Henderson.</item>
+        <item>The Human Services is located in room 211 of Benton.</item>
+        <item>The Kinesiology Department is located in room 201 of Petro.</item>
+        <item>The Mass Media Department is located in room 311 of Henderson.</item>
+        <item>The Mathematics Department is located in room 250 of Morgan.</item>
+        <item>The Modern Language Department is located in room 250 of Morgan.</item>
+        <item>The Music Department is located in room 211 of Garvey.</item>
+        <item>The Philosophy and Religious Studies Department is located in room 206 of Morgan.</item>
+        <item>The Physics and Astronomy Department is located in room 211 of Stoffer.</item>
+        <item>The Political Science and Public Administration Department is located in room 215 Henderson.</item>
+        <item>The Psychology Department is located in room 211 of Henderson.</item>
+        <item>The Social Work Department is located in room 412 in Benton.</item>
+        <item>The Department of Sociology and Anthropology is located in room 211 of Henderson</item>
+        <item>The Theatre Department is located in Garvey</item>
+    </string-array>
+    <string-array name="serve_names">
+        <item>Student Health Center</item>
+        <item>University Police</item>
+    </string-array>
+    <string-array name="serve_desc">
+        <item>Located in Morgan Hall.</item>
+        <item>Located in Morgan Hall.</item>
+    </string-array>
+</resources>
