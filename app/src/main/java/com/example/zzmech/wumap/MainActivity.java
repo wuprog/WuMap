@@ -2,6 +2,8 @@ package com.example.zzmech.wumap;
 
 import android.animation.ObjectAnimator;
 import android.app.Activity;
+import android.content.res.Configuration;
+import android.graphics.drawable.BitmapDrawable;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
@@ -35,6 +37,7 @@ public class MainActivity extends Activity
     private ImageButton deptButton;
     private Button adminButton;
     private ImageButton serveButton;
+    private ImageButton warningButton;
 
     private String[] bldgNames;
     private String[] bldgDesc;
@@ -80,8 +83,6 @@ public class MainActivity extends Activity
     //int absViewX;
     //int absViewY;
 
-    double resizer = .31;
-
     //float markerSize = 100;
 
     //private Bitmap bitmap = null;
@@ -91,11 +92,31 @@ public class MainActivity extends Activity
 
     //BitmapFactory.Options options = new BitmapFactory.Options();
 
+    private Bitmap bitmap = null;
+    private Bitmap marker = null;
+    private Bitmap markerScaled = null;
+    private Bitmap[] markerArray;
+    float markerSize = 20;//100
+    float[] markerSizeArray;
+    boolean startOK = false;
+    boolean grow = true;
+    boolean cycleBitmapUp = true;
+    double resizer = .32;//.31
+    int BMArraySize = 100;//200
+    int BMCtr = 0;
+
+    private BitmapDrawable bd;
+
+    boolean created = false;
+
 
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        createBitmaps(BMArraySize);
+        //bd = new BitmapDrawable(getResources(), bitmap);
 
        // mainText = (TextView) findViewById(R.id.main_text);
         Typeface face = Typeface.createFromAsset(getAssets(), "Asimov.otf");
@@ -117,7 +138,7 @@ public class MainActivity extends Activity
         //marker = BitmapFactory.decodeResource(getResources(), R.drawable.ich_sm1, options);
         //markerScaled = Bitmap.createScaledBitmap(marker, (int) markerSize, (int) markerSize, true);
 
-
+        warningButton = (ImageButton)findViewById(R.id.warningButton);
 
         hamBurgMenu = (ImageButton) findViewById(R.id.imageButton);
         hamBurgMenu.setOnClickListener(new View.OnClickListener()
@@ -283,6 +304,18 @@ public class MainActivity extends Activity
         //dbView = (TextView) findViewById(R.id.debug);
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        clearBitmaps(BMArraySize);
+        super.onSaveInstanceState(outState);
+    }
+
+
+    protected void onDestroy(){
+        clearBitmaps(BMArraySize);
+        super.onDestroy();
+    }
+
     //Shannon
     private final LocationListener locationListener = new LocationListener()
     {
@@ -337,6 +370,64 @@ public class MainActivity extends Activity
         myLocationText = (TextView) findViewById(R.id.myLocationText);
         String latLongString = "No location found";
         myLocationText.setText(latLongString);
+    }
+
+    public void clearBitmaps(int numOfBitmaps){
+        if(created)
+        {
+            for (int j = 0; j < numOfBitmaps; j++)
+            {
+                markerArray[j].recycle();
+                markerSizeArray[j] = 0;
+            }
+        }
+
+        bitmap.recycle();
+    }
+
+    public void createBitmaps(int numOfBitmaps){
+        //System.gc();
+        if(!created)
+        {
+            markerArray = new Bitmap[numOfBitmaps];
+            markerSizeArray = new float[numOfBitmaps];
+
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inMutable = true;
+            options.inScaled = true;
+
+            marker = BitmapFactory.decodeResource(getResources(), R.drawable.ich_sm1, options);
+            marker = Bitmap.createScaledBitmap(marker, 50, 50, true);
+
+            for (int j = 0; j < numOfBitmaps; j++)
+            {
+                if (grow)
+                {
+                    markerSize = markerSize + (float) resizer;
+                } else
+                {
+                    markerSize = markerSize - (float) resizer;
+                }
+
+                if (markerSize > 94)
+                {
+                    grow = false;
+                }
+                if (markerSize < 30)
+                {
+                    grow = true;
+                }
+
+               // markerScaled = Bitmap.createScaledBitmap(marker, (int) markerSize, (int) markerSize, true);
+                markerArray[j] = Bitmap.createScaledBitmap(marker, (int) markerSize, (int) markerSize, true);
+                markerSizeArray[j] = markerSize;
+                //markerScaled.recycle();
+            }
+            marker.recycle();
+        }
+        created = true;
+        //System.gc();
+
     }
 
     public void setPosition(){
@@ -423,10 +514,12 @@ public class MainActivity extends Activity
         private float scale = 1f;
         private float left = 0f, top = 0f;
 
-        private Bitmap bitmap = null;
-        private Bitmap marker = null;
-        private Bitmap markerScaled = null;
-        private Bitmap markerScaled1 = null;
+        //private Bitmap bitmap = null;
+        //private Bitmap marker = null;
+        //private Bitmap markerScaled = null;
+        //private Bitmap[] markerArray;
+
+        //private Bitmap markerScaled1 = null;
 
         private Paint paint1, paint2, paint3, paint4;
         private float width;
@@ -437,10 +530,10 @@ public class MainActivity extends Activity
         //int cTop = 0;
         //int cLeft = 0;
 
-        float markerSize = 100;
+        //float markerSize = 100;
 
-        boolean startOK = false;
-        boolean grow = true;
+//        boolean startOK = false;
+//        boolean grow = true;
 
         public CustomView(Context c)
         {
@@ -450,15 +543,16 @@ public class MainActivity extends Activity
             //dotThrob();
 
             //bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.wu_map);
+            //bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.wumap_photoshoped3);
             bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.wumap_photoshoped3);
 //
 //            Log.d("", "" + bitmap.getWidth());
 //
-            BitmapFactory.Options options = new BitmapFactory.Options();
-            options.inMutable = true;
-            options.inScaled = true;
+            //BitmapFactory.Options options = new BitmapFactory.Options();
+            //options.inMutable = true;
+            //options.inScaled = true;
 
-            marker = BitmapFactory.decodeResource(getResources(), R.drawable.ich_sm1, options);
+            //marker = BitmapFactory.decodeResource(getResources(), R.drawable.ich_sm1, options);
 //
             //Log.d("markerscaled", "Size:   " + markerScaled.getWidth());
             setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
@@ -530,6 +624,8 @@ public class MainActivity extends Activity
             }
 
         }
+
+
 
         public void onDraw(Canvas c)
         {
@@ -603,28 +699,68 @@ public class MainActivity extends Activity
             }
 
             c.save();
-            if(grow){
-                markerSize = markerSize + (float).34;}
-            else{
-                markerSize = markerSize - (float).34;}
-
-            if(markerSize > 70){
-                grow = false;
-            }
-            if(markerSize < 30){
-                grow = true;
-            }
+//            if(grow){
+//                markerSize = markerSize + (float).34;}
+//            else{
+//                markerSize = markerSize - (float).34;}
+//
+//            if(markerSize > 70){
+//                grow = false;
+//            }
+//            if(markerSize < 30){
+//                grow = true;
+//            }
 
             //markerScaled1 = Bitmap.createScaledBitmap(marker, 15, 15, true);
 
-            markerScaled = Bitmap.createScaledBitmap(marker, (int) markerSize, (int) markerSize, true);
+            //markerScaled = Bitmap.createScaledBitmap(marker, (int) markerSize, (int) markerSize, true);
 
             //markerScaled.setWidth((int) markerSize);
             //markerScaled.setHeight((int) markerSize);
 
             //markerScaled.setDensity(1020);
-            c.drawBitmap(markerScaled, newXf - (markerSize / 2), newYf - (markerSize/2), null);
+
+            //c.drawBitmap(markerScaled, newXf - (markerSize / 2), newYf - (markerSize/2), null);
+
+            if(!outOfBounds)
+            {
+                c.drawBitmap(markerArray[BMCtr], newXf - (markerSizeArray[BMCtr] / 2), newYf - (markerSizeArray[BMCtr] / 2), null);
+                warningButton.setVisibility(View.GONE);
+            }
+            else{
+                warningButton.animate().scaleX(0);
+                warningButton.setVisibility(View.VISIBLE);
+                warningButton.animate().scaleX(1).setDuration(500);
+                //warningButton.setVisibility(View.GONE);
+            }
+
+            //markerArray[BMCtr].recycle();
+
+            if (cycleBitmapUp)
+            {
+                BMCtr++;
+            } else
+            {
+                BMCtr--;
+            }
+            if (BMCtr == BMArraySize-1)
+            {
+                cycleBitmapUp = false;
+            }
+            if (BMCtr == 0)
+            {
+                cycleBitmapUp = true;
+            }
+
+
+//            BMCtr++;
+//
+//            if(BMCtr == BMArraySize){
+//                BMCtr = 0;
+//            }
+
             //c.drawBitmap(markerScaled1, (float)200, (float)200, null);
+
 
             //markerScaled.recycle();
             //markerScaled.
