@@ -31,7 +31,7 @@
             android:src="@drawable/hamburger_icon"
             android:scaleType="fitCenter"
             android:background="#003c6f"
-            android:layout_gravity="center" android:padding="7dp" android:layout_weight="1"
+            android:layout_gravity="center" android:padding="12dp" android:layout_weight="1"
             android:layout_alignParentLeft="true" android:layout_marginLeft="0dp"
             android:layout_alignParentTop="true" android:layout_marginTop="0dp"
             android:layout_alignParentStart="true"/>
@@ -52,8 +52,8 @@
             android:layout_width="50dp"
             android:layout_height="fill_parent"
             android:id="@+id/imageButton2" android:layout_weight="1"
-            android:layout_gravity="center|bottom" android:background="#003c6f" android:padding="7dp"
-            android:scaleType="fitCenter" android:src="@drawable/hamburger_icon"
+            android:layout_gravity="center|bottom" android:background="#003c6f" android:padding="10dp"
+            android:scaleType="fitCenter" android:src="@drawable/info_1"
             android:layout_alignParentLeft="false" android:layout_marginLeft="0dp"
             android:layout_alignParentTop="false" android:layout_marginTop="0dp"
             android:layout_alignParentEnd="true"/>
@@ -62,7 +62,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent" android:layout_weight="2" android:background="#003c6f"
-        >
+        android:id="@+id/rl">
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -78,11 +78,12 @@
         <ImageButton
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:id="@+id/warningButton" android:src="@drawable/hamburger_icon"
+            android:id="@+id/warningButton" android:src="@drawable/warning_0"
             android:background="#003c6f" android:layout_alignParentStart="true"
             android:layout_alignParentLeft="false"
             android:layout_alignWithParentIfMissing="false" android:layout_centerVertical="true"
-            android:elevation="20dp"/>
+            android:elevation="20dp" android:scaleType="centerInside"
+            android:paddingTop="5dp" android:paddingRight="5dp" android:paddingBottom="5dp"/>
 
     </RelativeLayout>
     <TableLayout

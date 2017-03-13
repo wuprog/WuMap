@@ -2,6 +2,8 @@ package com.example.zzmech.wumap;
 
 import android.animation.ObjectAnimator;
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.graphics.drawable.BitmapDrawable;
 import android.location.Criteria;
@@ -105,10 +107,13 @@ public class MainActivity extends Activity
     int BMArraySize = 100;//200
     int BMCtr = 0;
 
-    private BitmapDrawable bd;
+    //private BitmapDrawable bd;
 
     boolean created = false;
 
+    private WarningFrag warningFrag;
+    private FragmentManager fm;
+    private String tag;
 
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -139,6 +144,28 @@ public class MainActivity extends Activity
         //markerScaled = Bitmap.createScaledBitmap(marker, (int) markerSize, (int) markerSize, true);
 
         warningButton = (ImageButton)findViewById(R.id.warningButton);
+
+        fm = getFragmentManager();
+        tag = null;
+
+        warningButton.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View v)
+            {
+                warningFrag = new WarningFrag();
+                CharSequence text = "You pressed the text button!";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(getApplication(), text, duration);
+                toast.show();
+
+                fm.beginTransaction().add(R.id.rl, warningFrag)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .addToBackStack(tag)
+                        .commit();
+                //Toast.makeText("Hello!", Toast.LENGTH_LONG).show();
+            }
+        });
 
         hamBurgMenu = (ImageButton) findViewById(R.id.imageButton);
         hamBurgMenu.setOnClickListener(new View.OnClickListener()
@@ -306,7 +333,7 @@ public class MainActivity extends Activity
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        clearBitmaps(BMArraySize);
+        //clearBitmaps(BMArraySize);
         super.onSaveInstanceState(outState);
     }
 
@@ -315,6 +342,8 @@ public class MainActivity extends Activity
         clearBitmaps(BMArraySize);
         super.onDestroy();
     }
+
+    //protected void on
 
     //Shannon
     private final LocationListener locationListener = new LocationListener()
