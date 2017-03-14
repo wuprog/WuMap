@@ -22,6 +22,7 @@ public class WarningFrag extends Fragment
     private TextView textView;
     private TextView textView1;
     private Button intentBut;
+    private Button xBut;
 
     final String action = Settings.ACTION_LOCATION_SOURCE_SETTINGS;
 
@@ -42,6 +43,7 @@ public class WarningFrag extends Fragment
         View v = inflater.inflate(R.layout.fragment_warning_frag, parent, false);
 
         intentBut = (Button)v.findViewById(R.id.intentButton);
+        xBut = (Button)v.findViewById(R.id.xButton);
 
         intentBut.setOnClickListener(new View.OnClickListener()
         {
@@ -51,6 +53,16 @@ public class WarningFrag extends Fragment
                 getActivity().startActivity(new Intent(action));
             }
         });
+
+        xBut.setOnClickListener(new View.OnClickListener()
+                                {
+                                    @Override
+                                    public void onClick(View v)
+                                    {
+                                        getActivity().getFragmentManager().popBackStack();
+                                    }
+                                }
+        );
 
 
 

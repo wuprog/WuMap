@@ -12,57 +12,62 @@
              tools:context="com.example.zzmech.wumap.WarningFrag" android:clickable="true">
 
     <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
-        android:orientation="vertical"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" android:layout_weight="3">
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" android:layout_weight="6">
-            <TextView
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp" android:orientation="horizontal">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3" android:gravity="center_vertical|center_horizontal"
+                    android:text="Location Information" android:textAlignment="center"
+                    android:textIsSelectable="false" android:textSize="25sp"/>
+                <Button
+                    android:id="@+id/xButton"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/x_1"
+                    android:backgroundTint="#003c6f"
+                    android:elevation="0dp"
+                    android:gravity="bottom" android:scaleType="centerInside"/>
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Location Information" android:layout_weight="3"
-                android:textAlignment="center" android:gravity="center_vertical|center_horizontal"
-                android:textSize="25sp" android:textIsSelectable="false"/>
-            <ImageButton
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:text="New Button"
-                android:id="@+id/xButton" android:layout_weight="2" android:src="@drawable/x_1"
-                android:scaleType="centerInside" android:background="#444444"/>
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" android:layout_weight="1">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Something went wrong...There are two possible issues:"
-                android:id="@+id/textView2"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Text"
-                android:id="@+id/textView3"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Text"
-                android:id="@+id/textView4"/>
-            <Button
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Open GPS Settings"
-                android:id="@+id/intentButton" android:padding="5dp"/>
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Something went wrong...There are two possible issues:"/>
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="New Text"/>
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="New Text"/>
+                <Button
+                    android:id="@+id/intentButton"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp" android:text="Open GPS Settings"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>
