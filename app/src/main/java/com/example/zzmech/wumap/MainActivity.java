@@ -80,6 +80,7 @@ public class MainActivity extends Activity
     float newXf;
     float newYf;
     boolean outOfBounds;
+    boolean locationFound;
     //float finalXf;
     //float finalYf;
     //int absViewX;
@@ -393,12 +394,13 @@ public class MainActivity extends Activity
         myLocationText.setText("Your current Position is:\n" + latLongString);
     }
 
-    public void noLocation()
+    public void locationFound(Boolean val)
     {
-        TextView myLocationText;
-        myLocationText = (TextView) findViewById(R.id.myLocationText);
-        String latLongString = "No location found";
-        myLocationText.setText(latLongString);
+        //TextView myLocationText;
+        //myLocationText = (TextView) findViewById(R.id.myLocationText);
+        //String latLongString = "No location found";
+        //myLocationText.setText(latLongString);
+        locationFound = val;
     }
 
     public void clearBitmaps(int numOfBitmaps){
@@ -644,12 +646,13 @@ public class MainActivity extends Activity
                 Location l = locationManager.getLastKnownLocation(provider);
 
                 updateWithNewLocation(l);
+                locationFound(true);
 
                 locationManager.requestLocationUpdates(provider, 2000, 10, locationListener);
             } else
             {
                 Log.d("WE HAVE A NULL!!!!", "");
-                noLocation();
+                locationFound(false);
             }
 
         }
@@ -751,7 +754,7 @@ public class MainActivity extends Activity
 
             //c.drawBitmap(markerScaled, newXf - (markerSize / 2), newYf - (markerSize/2), null);
 
-            if(!outOfBounds)
+            if(!outOfBounds && locationFound)
             {
                 c.drawBitmap(markerArray[BMCtr], newXf - (markerSizeArray[BMCtr] / 2), newYf - (markerSizeArray[BMCtr] / 2), null);
                 warningButton.setVisibility(View.GONE);
