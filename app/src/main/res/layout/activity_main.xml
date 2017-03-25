@@ -24,39 +24,48 @@
         android:layout_height="50dp"
         android:elevation="10dp">
         <!--android:adjustViewBounds="true"/>-->
+        <RelativeLayout
+            android:id="@+id/rl_comp"
+            android:layout_width="50dp" android:layout_height="match_parent" android:padding="5dp"
+            android:visibility="gone">
+
+        </RelativeLayout>
         <ImageButton
+            android:id="@+id/imageButton"
             android:layout_width="50dp"
             android:layout_height="fill_parent"
-            android:id="@+id/imageButton"
-            android:src="@drawable/hamburger_icon"
-            android:scaleType="fitCenter"
-            android:background="#003c6f"
-            android:layout_gravity="center" android:padding="12dp" android:layout_weight="1"
-            android:layout_alignParentLeft="true" android:layout_marginLeft="0dp"
-            android:layout_alignParentTop="true" android:layout_marginTop="0dp"
-            android:layout_alignParentStart="true"/>
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center" android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_weight="1" android:background="#003c6f"
+            android:padding="12dp" android:scaleType="fitCenter"
+            android:src="@drawable/hamburger_icon" android:visibility="gone"/>
         <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:id="@+id/textView"
-            android:textSize="10sp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="0dp" android:background="#003c6f"
+            android:ellipsize="end" android:gravity="center_vertical|center_horizontal"
             android:padding="10dp"
-            android:textColor="#ffffff"
-            android:background="#003c6f"
             android:text="Welcome to the Washburn University Map App.  Touch a building to see its name.  Use the buttons at the bottom to select buildings, dpeartments, etc."
-            android:textAlignment="center" android:gravity="center_vertical|center_horizontal"
-            android:layout_gravity="center|left" android:layout_alignParentLeft="true"
-            android:layout_marginLeft="50dp" android:layout_alignParentTop="true"
-            android:layout_marginTop="0dp" android:layout_marginRight="50dp"/>
+            android:textAlignment="center" android:textColor="#ffffff" android:textSize="10sp"/>
         <ImageButton
+            android:id="@+id/infoButton"
             android:layout_width="50dp"
-            android:layout_height="fill_parent"
-            android:id="@+id/imageButton2" android:layout_weight="1"
-            android:layout_gravity="center|bottom" android:background="#003c6f" android:padding="10dp"
-            android:scaleType="fitCenter" android:src="@drawable/info_1"
-            android:layout_alignParentLeft="false" android:layout_marginLeft="0dp"
-            android:layout_alignParentTop="false" android:layout_marginTop="0dp"
-            android:layout_alignParentEnd="true"/>
+            android:layout_height="fill_parent" android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="false" android:layout_alignParentTop="false"
+            android:layout_gravity="center|bottom"
+            android:layout_marginLeft="0dp" android:layout_marginTop="0dp"
+            android:layout_weight="1" android:background="#003c6f"
+            android:padding="10dp" android:scaleType="fitCenter"
+            android:src="@drawable/info_1" android:visibility="visible"/>
     </RelativeLayout>
 
     <RelativeLayout

@@ -19,18 +19,28 @@
     </string-array>
     <string-array name="bldg_desc">
         <item>The Art Building (AB) - The Art Department is located in the Art Building.</item>
-        <item>Bennett Hall (BT) - Information Technology Services is located in Bennett Hall. Need to reset your password?  Visit BT104.</item>
-        <item>Benton Hall (BE) - Home to the School of Applied Studies which includes Criminal Justice and Social Work.</item>
-        <item>Carnegie Hall - </item>
+        <item>Bennett Hall (BT) - Information Technology Services is located in Bennett Hall. Need
+            to reset your password? Visit BT104.
+        </item>
+        <item>Benton Hall (BE) - Home to the School of Applied Studies which includes Criminal
+            Justice and Social Work.
+        </item>
+        <item>Carnegie Hall -</item>
         <item>Garvey - Home of the Theatre and Music Departments.</item>
-        <item>Henderson Commons (HC) - Home to the School of Business as well as History, Political Science, Psychology and Sociology/Anthropology.</item>
+        <item>Henderson Commons (HC) - Home to the School of Business as well as History, Political
+            Science, Psychology and Sociology/Anthropology.
+        </item>
         <item>KBI Building - Kansas Bureau of Investigation</item>
         <item>Law Building - Home to the School of Law.</item>
-        <item>Lee Arena - </item>
+        <item>Lee Arena -</item>
         <item>The Memorial Union - A great place to study or relax, and get some food.</item>
-        <item>Morgan Hall (MO) - The home to Math and English as well as the president\'s office, the various Dean\'s Offices, and many other administrative offices.</item>
+        <item>Morgan Hall (MO) - The home to Math and English as well as the president\'s office,
+            the various Dean\'s Offices, and many other administrative offices.
+        </item>
         <item>Petro</item>
-        <item>Stoffer Hall (ST) - Home to Biology, Chemistry, Computer Information Sciences and Physics.</item>
+        <item>Stoffer Hall (ST) - Home to Biology, Chemistry, Computer Information Sciences and
+            Physics.
+        </item>
         <item>Yager Stadium - The football and soccer fields.</item>
     </string-array>
     <string-array name="bldg_x">
@@ -92,7 +102,9 @@
     </string-array>
     <string-array name="dept_desc">
         <item>The Allied Health Department is located in room 107 of Benton 107.</item>
-        <item>The Art Department is located in the Art Building.  Stop by sometime and see works by students and faculty on display here.</item>
+        <item>The Art Department is located in the Art Building. Stop by sometime and see works by
+            students and faculty on display here.
+        </item>
         <item>The Biology Department is located in room 202 of Stoffer Hall.</item>
         <item>The Chemistry Department is located in room 312 of Stoffer Hall.</item>
         <item>The Communication Department is located in room 206 of Morgan.</item>
@@ -107,12 +119,16 @@
         <item>The Mathematics Department is located in room 250 of Morgan.</item>
         <item>The Modern Language Department is located in room 250 of Morgan.</item>
         <item>The Music Department is located in room 211 of Garvey.</item>
-        <item>The Philosophy and Religious Studies Department is located in room 206 of Morgan.</item>
+        <item>The Philosophy and Religious Studies Department is located in room 206 of Morgan.
+        </item>
         <item>The Physics and Astronomy Department is located in room 211 of Stoffer.</item>
-        <item>The Political Science and Public Administration Department is located in room 215 Henderson.</item>
+        <item>The Political Science and Public Administration Department is located in room 215
+            Henderson.
+        </item>
         <item>The Psychology Department is located in room 211 of Henderson.</item>
         <item>The Social Work Department is located in room 412 in Benton.</item>
-        <item>The Department of Sociology and Anthropology is located in room 211 of Henderson</item>
+        <item>The Department of Sociology and Anthropology is located in room 211 of Henderson
+        </item>
         <item>The Theatre Department is located in Garvey</item>
     </string-array>
     <string-array name="serve_names">
@@ -124,6 +140,6 @@
         <item>Located in Morgan Hall.</item>
     </string-array>
 
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

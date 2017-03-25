@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
+//import android.support.v4.app.Fragment;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -59,12 +60,17 @@ public class WarningFrag extends Fragment
                                     @Override
                                     public void onClick(View v)
                                     {
-                                        getActivity().getFragmentManager().popBackStack();
+                                        Fragment dummy;
+
+                                        dummy = getActivity().getFragmentManager().findFragmentByTag("warning");
+
+                                        getActivity().getFragmentManager().beginTransaction().remove(dummy).commit();
+
+                                        ((MainActivity)getActivity()).setWarningOpen(false);
                                     }
-                                }
-        );
 
 
+                                });
 
         return v;
     }

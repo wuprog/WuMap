@@ -1,73 +1,72 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout android:id="@+id/frameView"
+             xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="fill_parent"
-             android:layout_height="fill_parent"
-             android:id="@+id/frameView" android:layout_marginLeft="15px"
-             android:layout_marginTop="15px" android:layout_marginRight="15px"
-             android:layout_marginBottom="15px" android:fillViewport="false"
-             android:padding="15px"
+             android:layout_height="fill_parent" android:layout_marginBottom="15px"
+             android:layout_marginLeft="15px" android:layout_marginRight="15px"
+             android:layout_marginTop="15px" android:background="@drawable/layout_bg"
+             android:clickable="true"
              android:elevation="40dp"
-             android:background="@drawable/layout_bg"
+             android:fillViewport="false"
              android:focusable="false"
-             tools:context="com.example.zzmech.wumap.WarningFrag" android:clickable="true">
+             android:padding="15px" tools:context="com.example.zzmech.wumap.WarningFrag">
 
     <!-- TODO: Update blank fragment layout -->
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" android:layout_weight="3">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <LinearLayout
+            android:layout_height="80dp"
+            android:elevation="0dp" android:orientation="horizontal">
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="80dp" android:orientation="horizontal">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3" android:gravity="center_vertical|center_horizontal"
-                    android:text="Location Information" android:textAlignment="center"
-                    android:textIsSelectable="false" android:textSize="25sp"/>
-                <Button
-                    android:id="@+id/xButton"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:background="@drawable/x_1"
-                    android:backgroundTint="#003c6f"
-                    android:elevation="0dp"
-                    android:gravity="bottom" android:scaleType="centerInside"/>
-            </LinearLayout>
+                android:layout_height="match_parent"
+                android:layout_weight="3" android:gravity="center_vertical|center_horizontal"
+                android:text="Location Information" android:textAlignment="center"
+                android:textIsSelectable="false" android:textSize="25sp"/>
+            <Button
+                android:id="@+id/xButton"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_weight="8"
+                android:background="@drawable/x_1"
+                android:backgroundTint="#003c6f"
+                android:elevation="0dp" android:gravity="bottom"
+                android:padding="5dp" android:scaleType="centerInside"/>
+        </LinearLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1" android:orientation="vertical">
+                android:elevation="0dp" android:orientation="vertical">
                 <TextView
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="Something went wrong...There are two possible issues:"/>
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="New Text"/>
+                    android:layout_weight="1" android:text="New Text"/>
                 <TextView
                     android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="New Text"/>
+                    android:layout_weight="1" android:text="New Text"/>
                 <Button
                     android:id="@+id/intentButton"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp" android:text="Open GPS Settings"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-                </LinearLayout>
+                    android:layout_weight="1" android:padding="5dp"
+                    android:text="Open GPS Settings"/>
             </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
+        </ScrollView>
+    </LinearLayout>
 
 </FrameLayout>

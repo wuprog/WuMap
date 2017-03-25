@@ -1,13 +1,69 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout android:id="@+id/frameView"
+             xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
              xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="com.example.zzmech.wumap.InfoFrag">
+             android:layout_width="fill_parent"
+             android:layout_height="fill_parent" android:layout_marginBottom="15px"
+             android:layout_marginLeft="15px" android:layout_marginRight="15px"
+             android:layout_marginTop="15px" android:background="@drawable/layout_bg"
+             android:clickable="true"
+             android:elevation="40dp"
+             android:fillViewport="false"
+             android:focusable="false"
+             android:padding="15px" tools:context="com.example.zzmech.wumap.InfoFrag">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"/>
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/titleText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:layout_weight="3"
+                android:clickable="false" android:gravity="center_vertical|center_horizontal"
+                android:text="Location Name" android:textAlignment="center"
+                android:textIsSelectable="false" android:textSize="25sp"/>
+            <Button
+                android:id="@+id/xButton1"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/x_1"
+                android:backgroundTint="#003c6f"
+                android:elevation="0dp"
+                android:gravity="bottom" android:scaleType="centerInside"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" android:orientation="horizontal">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:src="@drawable/stoffer"/>
+                    <TextView
+                        android:id="@+id/descText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:elevation="14dp"
+                        android:text="TextView"/>
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:orientation="vertical"/>
 
 </FrameLayout>

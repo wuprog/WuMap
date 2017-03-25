@@ -4,26 +4,37 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+//import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class InfoFrag extends Fragment
 {
-    private TextView editText;
-    private TextView textView;
-    private TextView textView1;
-    private Button saveBut;
-    private WebView wv;
+    private TextView descText;
+    private TextView titleText;
+    private Button xButton;
+    private ImageView imageView;
+
+    private int imgRes;
+    private String selName;
+    private String description;
+    private int selectedInt;
+    private int mapRes;
+    private Bundle args;
 
     public InfoFrag()
     {
 
     }
+
 
     public void onCreate(Bundle savedInstanceState)
     {
@@ -35,6 +46,45 @@ public class InfoFrag extends Fragment
                              Bundle savedInstanceState)
     {
         View v = inflater.inflate(R.layout.fragment_info, parent, false);
+
+        titleText = (TextView)v.findViewById(R.id.titleText);
+        descText = (TextView)v.findViewById(R.id.descText);
+
+        args = this.getArguments();
+
+        //caller = args.getString("caller");
+        selectedInt = args.getInt("value");
+        selName = args.getString("name");
+        description = args.getString("description");
+
+        titleText.setText(selName);
+        descText.setText(description);
+
+        xButton = (Button)v.findViewById(R.id.xButton1);
+
+        xButton.setOnClickListener(new View.OnClickListener()
+                                {
+                                    @Override
+                                    public void onClick(View v)
+                                    {
+                                        CharSequence text = "You pressed the info x!";
+                                        int duration = Toast.LENGTH_SHORT;
+
+                                        //Toast toast = Toast.makeText(getActivity(), text, duration);
+                                        //toast.show();
+
+                                        Log.d("CLICK", "XX");
+
+                                        Fragment dummy;
+
+                                        dummy = getActivity().getFragmentManager().findFragmentByTag("info");
+
+                                        getActivity().getFragmentManager().beginTransaction().remove(dummy).commit();
+
+                                        ((MainActivity)getActivity()).setInfoOpen(false);
+                                    }
+                                }
+        );
 
         return v;
     }

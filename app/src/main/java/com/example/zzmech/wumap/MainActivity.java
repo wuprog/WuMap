@@ -4,9 +4,14 @@ import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.app.Fragment;
+//import android.support.v4.app.FragmentManager;
+//import android.support.v4.app.FragmentTransaction;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.drawable.BitmapDrawable;
 import android.location.Criteria;
+import android.location.GpsStatus;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -14,6 +19,7 @@ import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.*;
@@ -24,6 +30,9 @@ import android.graphics.*;
 import android.content.*;
 
 import java.util.*;
+
+import static com.example.zzmech.wumap.R.id.info;
+import static java.security.AccessController.getContext;
 
 public class MainActivity extends Activity
 {
@@ -113,8 +122,28 @@ public class MainActivity extends Activity
     boolean created = false;
 
     private WarningFrag warningFrag;
+    private CompassFrag compassFrag;
+    private InfoFrag infoFrag;
     private FragmentManager fm;
-    private String tag;
+    private String infoTag, warningTag;
+
+    private ImageButton infoButton;
+    private Boolean infoOpen, warningOpen;
+    Bundle args;
+    Resources r;
+    int px;
+
+    RelativeLayout.LayoutParams params;
+
+    public void setInfoOpen(Boolean infoOpen)
+    {
+        this.infoOpen = infoOpen;
+    }
+
+    public void setWarningOpen(Boolean warningOpen)
+    {
+        this.warningOpen = warningOpen;
+    }
 
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -122,6 +151,9 @@ public class MainActivity extends Activity
         setContentView(R.layout.activity_main);
 
         createBitmaps(BMArraySize);
+
+        args = new Bundle();
+
         //bd = new BitmapDrawable(getResources(), bitmap);
 
        // mainText = (TextView) findViewById(R.id.main_text);
@@ -132,6 +164,11 @@ public class MainActivity extends Activity
 
         textView = (TextView) findViewById(R.id.textView);
         textView.setTypeface(face);
+
+        infoOpen = false;
+        warningOpen = false;
+        infoTag = "info";
+        warningTag = "warning";
 
         //bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.wumap_photoshoped3);
 
@@ -145,28 +182,99 @@ public class MainActivity extends Activity
         //markerScaled = Bitmap.createScaledBitmap(marker, (int) markerSize, (int) markerSize, true);
 
         warningButton = (ImageButton)findViewById(R.id.warningButton);
+        infoButton = (ImageButton)findViewById(R.id.infoButton);
+
+        infoButton.setVisibility(View.GONE);
+        params = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT
+        );
+        params.setMargins(0, 0, 0, 0);
+
+        textView.setLayoutParams(params);
+
 
         fm = getFragmentManager();
-        tag = null;
+
+        fm.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener()
+        {
+            @Override
+            public void onBackStackChanged()
+            {
+
+                if(fm.getBackStackEntryCount() == 0){
+//                    fm.beginTransaction().add(R.id.rl, textFrag)
+//                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+//                            .addToBackStack(textTag)
+//                            .commit();
+                    infoOpen = false;
+
+                }
+                String cnt = "" + fm.getBackStackEntryCount();
+                //CharSequence text = "You pressed the text button!";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(getApplication(), cnt, duration);
+                toast.show();
+            }
+        });
+
+//        compassFrag = new CompassFrag();
+//
+//        fm.beginTransaction().add(R.id.rl_comp, compassFrag)
+//                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+//                .commit();
 
         warningButton.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View v)
             {
-                warningFrag = new WarningFrag();
-                CharSequence text = "You pressed the text button!";
-                int duration = Toast.LENGTH_SHORT;
+                if (!warningOpen)
+                {
+                    warningFrag = new WarningFrag();
+                    CharSequence text = "You pressed the text button!";
+                    int duration = Toast.LENGTH_SHORT;
 
-                Toast toast = Toast.makeText(getApplication(), text, duration);
-                toast.show();
+                    Toast toast = Toast.makeText(getApplication(), text, duration);
+                    toast.show();
 
-                fm.beginTransaction().add(R.id.rl, warningFrag)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                        .addToBackStack(tag)
-                        .commit();
+                    fm.beginTransaction().add(R.id.rl, warningFrag, warningTag)
+                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                            //.addToBackStack(warningTag)
+                            .commit();
+                    warningOpen = true;
+                }
                 //Toast.makeText("Hello!", Toast.LENGTH_LONG).show();
             }
         });
+
+            infoButton.setOnClickListener(new View.OnClickListener()
+            {
+                public void onClick(View v)
+                {
+                    if(!infoOpen)
+                    {
+                        infoFrag = new InfoFrag();
+                        infoOpen = true;
+                        CharSequence text = "You pressed the text button!";
+                        int duration = Toast.LENGTH_SHORT;
+
+                        Toast toast = Toast.makeText(getApplication(), text, duration);
+                        toast.show();
+
+                        args.putString("name", bldgNames[bldgSel]);
+                        args.putString("description", bldgDesc[bldgSel]);
+                        args.putInt("value", bldgSel);
+                        infoFrag.setArguments(args);
+
+                        fm.beginTransaction().add(R.id.rl, infoFrag,infoTag)
+                                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                                //.addToBackStack(infoTag)
+                                .commit();
+                        //Toast.makeText("Hello!", Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
 
         hamBurgMenu = (ImageButton) findViewById(R.id.imageButton);
         hamBurgMenu.setOnClickListener(new View.OnClickListener()
@@ -342,6 +450,10 @@ public class MainActivity extends Activity
     protected void onDestroy(){
         clearBitmaps(BMArraySize);
         super.onDestroy();
+    }
+
+    private void clearFrags(){
+        //fm.
     }
 
     //protected void on
@@ -838,6 +950,19 @@ public class MainActivity extends Activity
                             {
                                 bldgSel = i;
                                 textView.setText(bldgDesc[bldgSel]);
+
+                                r = getContext().getResources();
+                                px = (int) TypedValue.applyDimension(
+                                        TypedValue.COMPLEX_UNIT_DIP,
+                                        50,
+                                        r.getDisplayMetrics()
+                                );
+
+                                params.setMargins(0, 0, px, 0);
+                                textView.setLayoutParams(params);
+
+                                infoButton.setVisibility(View.VISIBLE);
+
                                 break;
                             }
                         } else
@@ -849,6 +974,19 @@ public class MainActivity extends Activity
                             {
                                 bldgSel = i;
                                 textView.setText(bldgDesc[bldgSel]);
+
+                                r = getContext().getResources();
+                                px = (int) TypedValue.applyDimension(
+                                        TypedValue.COMPLEX_UNIT_DIP,
+                                        50,
+                                        r.getDisplayMetrics()
+                                );
+
+                                params.setMargins(0, 0, px, 0);
+                                textView.setLayoutParams(params);
+
+                                infoButton.setVisibility(View.VISIBLE);
+
                                 break;
                             }
                         }
