@@ -341,6 +341,7 @@ public class MainActivity extends Activity
             }
         });
 
+
         deptListView = new ListView(this);
         deptListView.setBackgroundColor(Color.parseColor("#002c5f"));
         deptListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
@@ -720,7 +721,7 @@ public class MainActivity extends Activity
                 }
             });
             paint1 = new Paint();
-            paint1.setColor(Color.RED);
+            paint1.setColor(Color.parseColor("#cc2255"));
             paint1.setStrokeWidth(2f);
             paint1.setStyle(Paint.Style.FILL);
             paint2 = new Paint();

@@ -1,6 +1,7 @@
 package com.example.zzmech.wumap;
 
 import android.app.Activity;
+import android.content.res.TypedArray;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -23,12 +24,13 @@ public class InfoFrag extends Fragment
     private Button xButton;
     private ImageView imageView;
 
-    private int imgRes;
+    private int[] imgRes;
     private String selName;
     private String description;
     private int selectedInt;
-    private int mapRes;
+    private String usedRes;
     private Bundle args;
+    private TypedArray bldgPhotos;
 
     public InfoFrag()
     {
@@ -47,8 +49,11 @@ public class InfoFrag extends Fragment
     {
         View v = inflater.inflate(R.layout.fragment_info, parent, false);
 
+        bldgPhotos = getResources().obtainTypedArray(R.array.bldg_photos);
+
         titleText = (TextView)v.findViewById(R.id.titleText);
         descText = (TextView)v.findViewById(R.id.descText);
+        imageView = (ImageView)v.findViewById(R.id.photoView);
 
         args = this.getArguments();
 
@@ -57,9 +62,24 @@ public class InfoFrag extends Fragment
         selName = args.getString("name");
         description = args.getString("description");
 
+//        imgRes = new int[bldgPhotos.length];
+//
+//        for (int i = 0; i < imgRes.length; i++)
+//        {
+//            imgRes[i] = Integer.parseInt(bldgPhotos[i]);
+//        }
+
+
+
+        //usedRes = imgRes[selectedInt];
+        //usedRes = bldgPhotos[selectedInt];
+        //int dummy = usedRes;
+
         titleText.setText(selName);
         descText.setText(description);
+        imageView.setImageResource(bldgPhotos.getResourceId(selectedInt, -1));
 
+        bldgPhotos.recycle();
         xButton = (Button)v.findViewById(R.id.xButton1);
 
         xButton.setOnClickListener(new View.OnClickListener()
