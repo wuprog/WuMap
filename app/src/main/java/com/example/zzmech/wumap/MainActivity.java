@@ -64,10 +64,10 @@ public class MainActivity extends Activity
 
     private String[] deptNames;
     private String[] deptDesc;
-    private int[] deptBldg = {2, 0, 12, 12, 10, 12, 2, 3, 10, 4, 2, 11, 4, 10, 10, 5, 10, 12, 4, 4, 2, 4, 5};
+    private int[] deptBldg = {2, 0, 14, 14, 12, 14, 2, 4, 12, 6, 2, 13, 6, 12, 12, 5, 12, 14, 6, 6, 2, 6, 5};
     private String[] serveNames;
     private String[] serveDesc;
-    private int[] serveBldg = {10, 10};
+    private int[] serveBldg = {12, 12};
     private int bldgSel = -1;
     TextView myLocationText;
 
