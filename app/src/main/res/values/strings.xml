@@ -15,6 +15,7 @@
         <item>Mabee Library</item>
         <item>Memorial Union</item>
         <item>Morgan Hall (MO)</item>
+        <item>Mulvane Museum</item>
         <item>Petro</item>
         <item>Stoffer Hall (ST)</item>
         <item>Washburn University Foundation</item>
@@ -52,6 +53,7 @@
         <item>The Memorial Union - A great place to study or relax, and get some food.</item>
         <item>Morgan Hall (MO) - The home to Math and English as well as the president\'s office,
             the various Dean\'s Offices, and many other administrative offices.</item>
+        <item>Mulvane Museum - </item>
         <item>Petro</item>
         <item>Stoffer Hall (ST) - Home to Biology, Chemistry, Computer Information Sciences and
             Physics.</item>
@@ -78,6 +80,7 @@
         <item>.46400f</item>
         <item>.45270f</item>
         <item>.54290f</item>
+        <item>.40000f</item>
         <item>.75500f</item>
         <item>.78308f</item>
         <item>.04800f</item>
@@ -98,6 +101,7 @@
         <item>.45800f</item>
         <item>.28000f</item>
         <item>.18010f</item>
+        <item>.18000f</item>
         <item>.40000f</item>
         <item>.16317f</item>
         <item>.19000f</item>
@@ -105,24 +109,25 @@
         <item>.48500f</item>
     </string-array>
     <integer-array name="bldg_photos">
-        <item>@drawable/none</item>
-        <item>@drawable/none</item>
-        <item>@drawable/none</item>
+        <item>@drawable/art</item>
+        <item>@drawable/bennett</item>
+        <item>@drawable/benton</item>
         <item>@drawable/bradbury</item>
-        <item>@drawable/none</item>
-        <item>@drawable/none</item>
-        <item>@drawable/none</item>
-        <item>@drawable/none</item>
-        <item>@drawable/none</item>
-        <item>@drawable/none</item>
+        <item>@drawable/carnegie</item>
+        <item>@drawable/garvey</item>
+        <item>@drawable/henderson</item>
+        <item>@drawable/kbi</item>
+        <item>@drawable/law</item>
+        <item>@drawable/lee</item>
         <item>@drawable/mabee</item>
-        <item>@drawable/none</item>
-        <item>@drawable/none</item>
-        <item>@drawable/none</item>
+        <item>@drawable/memorial</item>
+        <item>@drawable/morgan</item>
+        <item>@drawable/mulvane</item>
+        <item>@drawable/petro</item>
         <item>@drawable/stoffer</item>
         <item>@drawable/foundation</item>
         <item>@drawable/white</item>
-        <item>@drawable/none</item>
+        <item>@drawable/yager</item>
     </integer-array>
     <string-array name="dept_names">
         <item>Allied Health</item>

@@ -2,6 +2,7 @@ package com.example.zzmech.wumap;
 
 import android.app.Activity;
 import android.content.res.TypedArray;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -52,9 +53,14 @@ public class InfoFrag extends Fragment
         bldgPhotos = getResources().obtainTypedArray(R.array.bldg_photos);
 
         titleText = (TextView)v.findViewById(R.id.titleText);
+
         descText = (TextView)v.findViewById(R.id.descText);
         imageView = (ImageView)v.findViewById(R.id.photoView);
 
+        Typeface boldFace = Typeface.createFromAsset(getActivity().getAssets(), "Sansation_Bold.ttf");
+        Typeface face = Typeface.createFromAsset(getActivity().getAssets(), "Sansation_Regular.ttf");
+
+        titleText.setTypeface(boldFace);
         args = this.getArguments();
 
         //caller = args.getString("caller");
@@ -77,6 +83,7 @@ public class InfoFrag extends Fragment
 
         titleText.setText(selName);
         descText.setText(description);
+        descText.setTypeface(face);
         imageView.setImageResource(bldgPhotos.getResourceId(selectedInt, -1));
 
         bldgPhotos.recycle();

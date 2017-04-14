@@ -2,6 +2,7 @@ package com.example.zzmech.wumap;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.app.Fragment;
 //import android.support.v4.app.Fragment;
@@ -21,7 +22,7 @@ import android.widget.Toast;
 public class WarningFrag extends Fragment
 {
     private TextView textView;
-    private TextView textView1;
+    private TextView titleView;
     private Button intentBut;
     private Button xBut;
 
@@ -45,6 +46,14 @@ public class WarningFrag extends Fragment
 
         intentBut = (Button)v.findViewById(R.id.intentButton);
         xBut = (Button)v.findViewById(R.id.xButton);
+
+        Typeface boldFace = Typeface.createFromAsset(getActivity().getAssets(), "Sansation_Bold.ttf");
+        Typeface face = Typeface.createFromAsset(getActivity().getAssets(), "Sansation_Regular.ttf");
+
+        textView = (TextView)v.findViewById(R.id.warning_text);
+        textView.setTypeface(face);
+        titleView = (TextView)v.findViewById(R.id.warning_title);
+        titleView.setTypeface(boldFace);
 
         intentBut.setOnClickListener(new View.OnClickListener()
         {

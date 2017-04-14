@@ -18,6 +18,7 @@ import android.location.LocationManager;
 import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
@@ -32,6 +33,7 @@ import android.content.*;
 import java.util.*;
 
 import static com.example.zzmech.wumap.R.id.info;
+import static com.example.zzmech.wumap.R.id.text;
 import static java.security.AccessController.getContext;
 
 public class MainActivity extends Activity
@@ -134,6 +136,9 @@ public class MainActivity extends Activity
     int px;
 
     RelativeLayout.LayoutParams params;
+    LinearLayout.LayoutParams params_rl;
+
+    private RelativeLayout relativeLayout;
 
     public void setInfoOpen(Boolean infoOpen)
     {
@@ -157,13 +162,17 @@ public class MainActivity extends Activity
         //bd = new BitmapDrawable(getResources(), bitmap);
 
        // mainText = (TextView) findViewById(R.id.main_text);
-        Typeface face = Typeface.createFromAsset(getAssets(), "Asimov.otf");
+        //Typeface face = Typeface.createFromAsset(getAssets(), "Asimov.otf");
         //mainText.setTypeface(face);
 
+        Typeface boldFace = Typeface.createFromAsset(getAssets(), "Sansation_Bold.ttf");
+        final Typeface face = Typeface.createFromAsset(getAssets(), "Sansation_Regular.ttf");
+
         myLocationText = (TextView) findViewById(R.id.myLocationText);
+        relativeLayout = (RelativeLayout) findViewById(R.id.rl_top);
 
         textView = (TextView) findViewById(R.id.textView);
-        textView.setTypeface(face);
+        textView.setTypeface(boldFace);
 
         infoOpen = false;
         warningOpen = false;
@@ -189,10 +198,15 @@ public class MainActivity extends Activity
                 RelativeLayout.LayoutParams.WRAP_CONTENT,
                 RelativeLayout.LayoutParams.WRAP_CONTENT
         );
+        params_rl = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                getResources().getDimensionPixelSize(R.dimen.text_height));
+
         params.setMargins(0, 0, 0, 0);
 
-        textView.setLayoutParams(params);
+        //newParams.setMargins(0, 0, 0, 0);
 
+        textView.setLayoutParams(params);
 
         fm = getFragmentManager();
 
@@ -328,6 +342,7 @@ public class MainActivity extends Activity
             }
         });
 
+
         ArrayList<String> bldgList = new ArrayList<String>();
         for (int i = 0; i < bldgNames.length; i++) bldgList.add(bldgNames[i]);
         bldgListView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, bldgList)
@@ -337,6 +352,7 @@ public class MainActivity extends Activity
                 View view = super.getView(position, convertView, parent);
                 TextView tv = (TextView) view.findViewById(android.R.id.text1);
                 tv.setTextColor(Color.WHITE);
+                tv.setTypeface(face);
                 return view;
             }
         });
@@ -363,6 +379,7 @@ public class MainActivity extends Activity
                 View view = super.getView(position, convertView, parent);
                 TextView tv = (TextView) view.findViewById(android.R.id.text1);
                 tv.setTextColor(Color.WHITE);
+                tv.setTypeface(face);
                 return view;
             }
         });
@@ -388,6 +405,7 @@ public class MainActivity extends Activity
                 View view = super.getView(position, convertView, parent);
                 TextView tv = (TextView) view.findViewById(android.R.id.text1);
                 tv.setTextColor(Color.WHITE);
+                tv.setTypeface(face);
                 return view;
             }
         });
@@ -950,6 +968,7 @@ public class MainActivity extends Activity
                             if (Math.abs(x1 - xo) < 50 && Math.abs(y1 - yo) < 50)
                             {
                                 bldgSel = i;
+                                relativeLayout.setLayoutParams(params_rl);
                                 textView.setText(bldgDesc[bldgSel]);
 
                                 r = getContext().getResources();
@@ -961,6 +980,14 @@ public class MainActivity extends Activity
 
                                 params.setMargins(0, 0, px, 0);
                                 textView.setLayoutParams(params);
+                                textView.setEllipsize(TextUtils.TruncateAt.END);
+                                textView.setSingleLine(false);
+                                textView.setLines(2);
+                                textView.setGravity(Gravity.START);
+
+                                //newParams.setMargins(0, 0, px, 0);
+
+                                //textView.setLayoutParams(newParams);
 
                                 infoButton.setVisibility(View.VISIBLE);
 
@@ -974,6 +1001,7 @@ public class MainActivity extends Activity
                             if (Math.abs(x1 - xo) < 50 && Math.abs(y1 - yo) < 50)
                             {
                                 bldgSel = i;
+                                relativeLayout.setLayoutParams(params_rl);
                                 textView.setText(bldgDesc[bldgSel]);
 
                                 r = getContext().getResources();
@@ -985,6 +1013,14 @@ public class MainActivity extends Activity
 
                                 params.setMargins(0, 0, px, 0);
                                 textView.setLayoutParams(params);
+                                textView.setEllipsize(TextUtils.TruncateAt.END);
+                                textView.setSingleLine(false);
+                                textView.setLines(2);
+                                textView.setGravity(Gravity.START);
+
+                                //newParams.setMargins(0, 0, px, 0);
+
+                                //textView.setLayoutParams(newParams);
 
                                 infoButton.setVisibility(View.VISIBLE);
 
