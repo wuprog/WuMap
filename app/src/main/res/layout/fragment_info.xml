@@ -27,7 +27,7 @@
                 android:layout_height="match_parent" android:layout_weight="3"
                 android:clickable="false" android:gravity="center_vertical|center_horizontal"
                 android:text="Location Name" android:textAlignment="center"
-                android:textIsSelectable="false" android:textSize="25sp"/>
+                android:textIsSelectable="false" android:textSize="20sp"/>
             <Button
                 android:id="@+id/xButton1"
                 android:layout_width="60dp"
@@ -57,7 +57,7 @@
                         android:id="@+id/descText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" android:elevation="14dp"
-                        android:text="TextView"/>
+                        android:padding="3dp" android:text="TextView"/>
                 </LinearLayout>
             </ScrollView>
 

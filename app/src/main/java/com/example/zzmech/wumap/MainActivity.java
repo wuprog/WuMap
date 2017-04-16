@@ -66,8 +66,7 @@ public class MainActivity extends Activity
 
     private String[] deptNames;
     private String[] deptDesc;
-    private int[] deptBldg = {2, 0, 14, 14, 12, 14, 2, 4, 12, 6, 2, 13, 6, 12, 12, 5, 12, 14, 6, 6, 2, 6, 5};
-    private String[] serveNames;
+    private int[] deptBldg = {2, 0, 16, 16, 13, 16, 2, 4, 13, 7, 2, 15, 7, 13, 13, 6, 13, 16, 7, 7, 2, 7, 6};    private String[] serveNames;
     private String[] serveDesc;
     private int[] serveBldg = {12, 12};
     private int bldgSel = -1;
@@ -165,8 +164,8 @@ public class MainActivity extends Activity
         //Typeface face = Typeface.createFromAsset(getAssets(), "Asimov.otf");
         //mainText.setTypeface(face);
 
-        Typeface boldFace = Typeface.createFromAsset(getAssets(), "Sansation_Bold.ttf");
-        final Typeface face = Typeface.createFromAsset(getAssets(), "Sansation_Regular.ttf");
+        Typeface boldFace = Typeface.createFromAsset(getAssets(), "Gravity_Bold.otf");
+        final Typeface face = Typeface.createFromAsset(getAssets(), "Gravity_Regular.otf");
 
         myLocationText = (TextView) findViewById(R.id.myLocationText);
         relativeLayout = (RelativeLayout) findViewById(R.id.rl_top);

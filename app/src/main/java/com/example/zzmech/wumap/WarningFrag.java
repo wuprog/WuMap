@@ -47,8 +47,8 @@ public class WarningFrag extends Fragment
         intentBut = (Button)v.findViewById(R.id.intentButton);
         xBut = (Button)v.findViewById(R.id.xButton);
 
-        Typeface boldFace = Typeface.createFromAsset(getActivity().getAssets(), "Sansation_Bold.ttf");
-        Typeface face = Typeface.createFromAsset(getActivity().getAssets(), "Sansation_Regular.ttf");
+        Typeface boldFace = Typeface.createFromAsset(getActivity().getAssets(), "Gravity_Bold.otf");
+        Typeface face = Typeface.createFromAsset(getActivity().getAssets(), "Gravity_Regular.otf");
 
         textView = (TextView)v.findViewById(R.id.warning_text);
         textView.setTypeface(face);

@@ -57,8 +57,8 @@ public class InfoFrag extends Fragment
         descText = (TextView)v.findViewById(R.id.descText);
         imageView = (ImageView)v.findViewById(R.id.photoView);
 
-        Typeface boldFace = Typeface.createFromAsset(getActivity().getAssets(), "Sansation_Bold.ttf");
-        Typeface face = Typeface.createFromAsset(getActivity().getAssets(), "Sansation_Regular.ttf");
+        Typeface boldFace = Typeface.createFromAsset(getActivity().getAssets(), "Gravity_Bold.otf");
+        Typeface face = Typeface.createFromAsset(getActivity().getAssets(), "Gravity_Regular.otf");
 
         titleText.setTypeface(boldFace);
         args = this.getArguments();

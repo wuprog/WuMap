@@ -7,6 +7,7 @@
         <item>Benton Hall (BE)</item>
         <item>Bradbury Thompson Alumni Center</item>
         <item>Carnegie Hall</item>
+        <item>Carole Chapel</item>
         <item>Garvey</item>
         <item>Henderson Commons (HC)</item>
         <item>KBI Building</item>
@@ -33,7 +34,8 @@
         <item>Bradbury Thompson Alumni Center - Located on Washburn’s campus off 17th and Jewell,
             the Bradbury Thompson Alumni Center sits across the street from White Concert Hall and
             Mulvane Art Museum. The facility is designed to serve the needs of alumni, the university and the Topeka community.</item>
-        <item>Carnegie Hall -</item>
+        <item>Carnegie Hall - </item>
+        <item>Carole Chapel - </item>
         <item>Garvey - Home of the Theatre and Music Departments.</item>
         <item>Henderson Commons (HC) - Home to the School of Business as well as History, Political
             Science, Psychology and Sociology/Anthropology.
@@ -72,6 +74,7 @@
         <item>.36358f</item>
         <item>.32700f</item>
         <item>.67000f</item>
+        <item>.42000f</item>
         <item>.46000f</item>
         <item>.37899f</item>
         <item>.88500f</item>
@@ -93,6 +96,7 @@
         <item>.38483f</item>
         <item>.11600f</item>
         <item>.29000f</item>
+        <item>.39000f</item>
         <item>.15000f</item>
         <item>.47031f</item>
         <item>.62000f</item>
@@ -114,6 +118,7 @@
         <item>@drawable/benton</item>
         <item>@drawable/bradbury</item>
         <item>@drawable/carnegie</item>
+        <item>@drawable/carole</item>
         <item>@drawable/garvey</item>
         <item>@drawable/henderson</item>
         <item>@drawable/kbi</item>
