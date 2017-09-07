@@ -1,35 +1,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
-              android:orientation="vertical"
               android:id="@+id/layout"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              tools:context=".MainActivity"
-              android:background="#003c6f">
-
-    <!--<TextView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="75px"-->
-        <!--android:textSize="30dp"-->
-        <!--android:gravity="center"-->
-        <!--android:textColor="#ffffff"-->
-        <!--android:background="#003c6f"-->
-        <!--android:text="Washburn U. Map App"-->
-        <!--android:layout_marginBottom="1dp"-->
-        <!--android:id="@+id/main_text"/>-->
+              android:background="#003c6f"
+              android:orientation="vertical"
+              tools:context=".MainActivity">
 
     <RelativeLayout
         android:id="@+id/rl_top"
         android:layout_width="fill_parent"
         android:layout_height="60dp"
-        android:elevation="10dp" android:orientation="horizontal">
+        android:elevation="10dp"
+        android:orientation="horizontal">
         <!--android:adjustViewBounds="true"/>-->
         <RelativeLayout
             android:id="@+id/rl_comp"
-            android:layout_width="50dp" android:layout_height="match_parent" android:padding="5dp"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:padding="5dp"
             android:visibility="gone">
 
         </RelativeLayout>
+
         <ImageButton
             android:id="@+id/imageButton"
             android:layout_width="50dp"
@@ -37,11 +30,16 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_gravity="center" android:layout_marginLeft="0dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="0dp"
             android:layout_marginTop="0dp"
-            android:layout_weight="1" android:background="#003c6f"
-            android:padding="12dp" android:scaleType="fitCenter"
-            android:src="@drawable/hamburger_icon" android:visibility="gone"/>
+            android:layout_weight="1"
+            android:background="#003c6f"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/hamburger_icon"
+            android:visibility="gone"/>
+
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
@@ -50,27 +48,41 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="0dp"
             android:layout_marginRight="50dp"
-            android:layout_marginTop="0dp" android:background="#003c6f"
-            android:ellipsize="end" android:gravity="center_vertical|center_horizontal"
+            android:layout_marginTop="0dp"
+            android:background="#003c6f"
+            android:ellipsize="end"
+            android:gravity="center_vertical|center_horizontal"
             android:padding="10dp"
             android:text="Welcome to the Washburn University Map App.  Touch a building to see its name.  Use the buttons at the bottom to select buildings, dpeartments, etc."
-            android:textAlignment="center" android:textColor="#ffffff" android:textSize="10sp"/>
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            android:textSize="10sp"/>
+
         <ImageButton
             android:id="@+id/infoButton"
             android:layout_width="50dp"
-            android:layout_height="fill_parent" android:layout_alignParentEnd="true"
-            android:layout_alignParentLeft="false" android:layout_alignParentTop="false"
+            android:layout_height="fill_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentTop="false"
             android:layout_gravity="center|bottom"
-            android:layout_marginLeft="0dp" android:layout_marginTop="0dp"
-            android:layout_weight="1" android:background="#003c6f"
-            android:padding="10dp" android:scaleType="fitCenter"
-            android:src="@drawable/info_1" android:visibility="visible"/>
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_weight="1"
+            android:background="#003c6f"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/info_1"
+            android:visibility="visible"/>
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/rl"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" android:layout_weight="2" android:background="#003c6f"
-        android:id="@+id/rl">
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:background="#003c6f">
+
         <LinearLayout
             android:id="@+id/dummyView"
             android:layout_width="fill_parent"
@@ -79,81 +91,108 @@
             android:background="#003c6f"
             android:orientation="vertical">
         </LinearLayout>
+
         <ImageView
+            android:id="@+id/imgV1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imgV1" android:visibility="visible"/>
+            android:visibility="visible"/>
+
         <ImageButton
+            android:id="@+id/warningButton"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:id="@+id/warningButton" android:src="@drawable/warning_0"
-            android:background="#003c6f" android:layout_alignParentStart="true"
             android:layout_alignParentLeft="false"
-            android:layout_alignWithParentIfMissing="false" android:layout_centerVertical="true"
-            android:elevation="20dp" android:scaleType="centerInside"
-            android:paddingTop="5dp" android:paddingRight="5dp" android:paddingBottom="5dp"/>
+            android:layout_alignParentStart="true"
+            android:layout_alignWithParentIfMissing="false"
+            android:layout_centerVertical="true"
+            android:background="#003c6f"
+            android:elevation="20dp"
+            android:paddingBottom="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="5dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/warning_0"/>
 
     </RelativeLayout>
+
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp" android:shrinkColumns="0,1,2,3"
-        android:background="#003c6f" android:showDividers="middle|end">
+        android:layout_height="50dp"
+        android:background="#003c6f"
+        android:showDividers="middle|end"
+        android:shrinkColumns="0,1,2,3">
 
-    <!--<TableLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="45dp" android:shrinkColumns="0,1,2,3"-->
-        <!--android:background="#A3DDE2" android:showDividers="middle|end"-->
-        <!-->-->
-        <!--<TableRow-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent" android:layout_gravity="center"-->
-            <!--android:gravity="center">-->
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="10dp"
-                android:text="New Text"
-                android:id="@+id/myLocationText" android:background="#003c6f"
-                android:textColor="#ffffff"
-                android:gravity="center_horizontal" android:layout_gravity="center"
-                android:visibility="gone"/>
+        <TextView
+            android:id="@+id/myLocationText"
+            android:layout_width="fill_parent"
+            android:layout_height="10dp"
+            android:layout_gravity="center"
+            android:background="#003c6f"
+            android:gravity="center_horizontal"
+            android:text="New Text"
+            android:textColor="#ffffff"
+            android:visibility="gone"/>
 
         <TableRow
             android:layout_width="fill_parent"
-            android:layout_height="45dp" android:gravity="center|bottom"
-            android:showDividers="beginning|middle|end" android:focusable="false"
-            android:background="#003c6f" android:visibility="visible">
-            <ImageButton
-                android:id="@+id/bldgButton" android:textSize="15sp" android:layout_span="1"
-                android:background="#003c6f" android:textColor="#ffffff"
+            android:layout_height="45dp"
+            android:background="#003c6f"
+            android:focusable="false"
+            android:gravity="center|bottom"
+            android:showDividers="beginning|middle|end"
+            android:visibility="visible">
 
-                android:src="@drawable/buildings_1"
+            <ImageButton
+                android:id="@+id/bldgButton"
                 android:layout_width="80dp"
-                android:scaleType="fitCenter"
-                android:adjustViewBounds="false" android:layout_height="fill_parent"
-                android:layout_gravity="bottom|top" android:padding="10dp"
-                android:layout_weight="1" android:cropToPadding="false"/>
-
-            <ImageButton
-                android:id="@+id/deptButton" android:textSize="15sp" android:layout_span="1"
-                android:background="#003c6f" android:textColor="#ffffff"
-
-                android:src="@drawable/books_1"
-                android:layout_width="80dp"
-                android:scaleType="fitCenter"
-                android:adjustViewBounds="false" android:layout_height="fill_parent"
-                android:layout_gravity="bottom|top" android:padding="10dp"
-                android:layout_weight="1" android:cropToPadding="false"/>
-
-            <ImageButton
-                android:id="@+id/serveButton" android:layout_width="80dp" android:layout_height="fill_parent"
-                android:layout_gravity="bottom|top" android:layout_span="1"
+                android:layout_height="fill_parent"
+                android:layout_gravity="bottom|top"
+                android:layout_span="1"
 
                 android:layout_weight="1"
                 android:adjustViewBounds="false"
                 android:background="#003c6f"
-                android:cropToPadding="false" android:padding="10dp"
-                android:scaleType="fitCenter" android:src="@drawable/service"
-                android:textColor="#ffffff" android:textSize="15sp"/>
+                android:cropToPadding="false"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/buildings_1"
+                android:textColor="#ffffff"
+                android:textSize="15sp"/>
+
+            <ImageButton
+                android:id="@+id/deptButton"
+                android:layout_width="80dp"
+                android:layout_height="fill_parent"
+                android:layout_gravity="bottom|top"
+                android:layout_span="1"
+
+                android:layout_weight="1"
+                android:adjustViewBounds="false"
+                android:background="#003c6f"
+                android:cropToPadding="false"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/books_1"
+                android:textColor="#ffffff"
+                android:textSize="15sp"/>
+
+            <ImageButton
+                android:id="@+id/serveButton"
+                android:layout_width="80dp"
+                android:layout_height="fill_parent"
+                android:layout_gravity="bottom|top"
+                android:layout_span="1"
+
+                android:layout_weight="1"
+                android:adjustViewBounds="false"
+                android:background="#003c6f"
+                android:cropToPadding="false"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/service"
+                android:textColor="#ffffff"
+                android:textSize="15sp"/>
 
             <!--
             <ImageButton
@@ -167,39 +206,5 @@
                 android:layout_gravity="bottom|top" android:padding="10dp"
                 android:layout_weight="1" android:cropToPadding="false"/> -->
         </TableRow>
-        <!--</TableRow>-->
-        <!--<TableRow-->
-            <!--android:layout_width="fill_parent"-->
-            <!--android:layout_height="fill_parent" android:gravity="center|bottom"-->
-            <!--android:showDividers="beginning|middle|end">-->
-            <!--<Button-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="fill_parent"-->
-                <!--android:text="Bldgs."-->
-                <!--android:id="@+id/bldgButton" android:textSize="15sp"-->
-                <!--android:layout_span="1" android:layout_weight="1"/>-->
-            <!--<Button-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="fill_parent"-->
-                <!--android:text="Deprt."-->
-                <!--android:id="@+id/deptButton" android:textSize="15sp" android:layout_span="1"-->
-                <!--android:layout_weight="1"/>-->
-            <!--<Button-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="fill_parent"-->
-                <!--android:text="Serv."-->
-                <!--android:id="@+id/serveButton" android:layout_span="1" android:layout_weight="1"/>-->
-            <!--<Button-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="fill_parent"-->
-                <!--android:text="test"-->
-                <!--android:id="@+id/dotBut" android:layout_span="1" android:layout_weight="1"/>-->
-        <!--</TableRow>-->
     </TableLayout>
-
-        <!--<TableRow-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent" android:layout_gravity="center"-->
-        <!--android:gravity="center">-->
-        <!--</TableRow>-->
 </LinearLayout>
