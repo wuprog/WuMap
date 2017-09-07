@@ -20,8 +20,7 @@ import android.widget.TextView;
 import static android.content.Context.SENSOR_SERVICE;
 
 
-public class CompassFrag extends Fragment implements SensorEventListener
-{
+public class CompassFrag extends Fragment implements SensorEventListener {
 
     private ImageView image;
 
@@ -36,23 +35,20 @@ public class CompassFrag extends Fragment implements SensorEventListener
     // TODO: Rename and change types of parameters
 
 
-    public CompassFrag()
-    {
+    public CompassFrag() {
         // Required empty public constructor
     }
 
 
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent,
-                             Bundle savedInstanceState)
-    {
+                             Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_compass, parent, false);
 
