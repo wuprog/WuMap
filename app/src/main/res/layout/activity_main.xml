@@ -155,6 +155,7 @@
                 android:scaleType="fitCenter" android:src="@drawable/service"
                 android:textColor="#ffffff" android:textSize="15sp"/>
 
+            <!--
             <ImageButton
                 android:id="@+id/dotBut" android:textSize="15sp" android:layout_span="1"
                 android:background="#003c6f" android:textColor="#ffffff"
@@ -164,7 +165,7 @@
                 android:scaleType="fitCenter"
                 android:adjustViewBounds="false" android:layout_height="fill_parent"
                 android:layout_gravity="bottom|top" android:padding="10dp"
-                android:layout_weight="1" android:cropToPadding="false"/>
+                android:layout_weight="1" android:cropToPadding="false"/> -->
         </TableRow>
         <!--</TableRow>-->
         <!--<TableRow-->

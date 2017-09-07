@@ -375,6 +375,7 @@ public class MainActivity extends Activity
         });
 
         //Set up to interact with the "Dot" button, but has no content -Connor
+        /*
         dotButton = (ImageButton)findViewById(R.id.dotBut);
         dotButton.setOnClickListener(new View.OnClickListener()
         {
@@ -384,6 +385,7 @@ public class MainActivity extends Activity
 
             }
         });
+        */
     }
 
     @Override
