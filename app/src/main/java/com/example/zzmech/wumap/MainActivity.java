@@ -70,41 +70,16 @@ public class MainActivity extends Activity
     private String[] serveDesc;
     private int[] serveBldg = {12, 12};
     private int bldgSel = -1;
-    TextView myLocationText;
+    private TextView myLocationText;
 
-    ImageButton hamBurgMenu;
-
-    //private float cvLeft;
-    //private float cvRight;
-    //private float cvTop;
-    //private float cvBottom;
+    private ImageButton hamBurgMenu;
     private ImageButton dotButton;
 
-    //Shannon
-    //private Button gpsButton;
-    //private GridView gpsView;
-    //Animation animScale;
     Location globalLoc;
-    //private TextView dbView;
-    //ImageView imV;
     float newXf;
     float newYf;
     boolean outOfBounds;
     boolean locationFound;
-    //float finalXf;
-    //float finalYf;
-    //int absViewX;
-    //int absViewY;
-
-    //float markerSize = 100;
-
-    //private Bitmap bitmap = null;
-    //private Bitmap marker = null;
-    //private Bitmap markerScaled = null;
-    //private Bitmap markerScaled1 = null;
-
-    //BitmapFactory.Options options = new BitmapFactory.Options();
-
     private Bitmap bitmap = null;
     private Bitmap marker = null;
     private Bitmap markerScaled = null;
@@ -117,8 +92,6 @@ public class MainActivity extends Activity
     double resizer = .32;//.31
     int BMArraySize = 100;//200
     int BMCtr = 0;
-
-    //private BitmapDrawable bd;
 
     boolean created = false;
 
@@ -158,12 +131,6 @@ public class MainActivity extends Activity
 
         args = new Bundle();
 
-        //bd = new BitmapDrawable(getResources(), bitmap);
-
-       // mainText = (TextView) findViewById(R.id.main_text);
-        //Typeface face = Typeface.createFromAsset(getAssets(), "Asimov.otf");
-        //mainText.setTypeface(face);
-
         Typeface boldFace = Typeface.createFromAsset(getAssets(), "Gravity_Bold.otf");
         final Typeface face = Typeface.createFromAsset(getAssets(), "Gravity_Regular.otf");
 
@@ -177,17 +144,6 @@ public class MainActivity extends Activity
         warningOpen = false;
         infoTag = "info";
         warningTag = "warning";
-
-        //bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.wumap_photoshoped3);
-
-
-            //Log.d("", "" + bitmap.getWidth());
-            //BitmapFactory.Options options = new BitmapFactory.Options();
-            //options.inMutable = true;
-            //options.inScaled = true;
-
-        //marker = BitmapFactory.decodeResource(getResources(), R.drawable.ich_sm1, options);
-        //markerScaled = Bitmap.createScaledBitmap(marker, (int) markerSize, (int) markerSize, true);
 
         warningButton = (ImageButton)findViewById(R.id.warningButton);
         infoButton = (ImageButton)findViewById(R.id.infoButton);
@@ -203,8 +159,6 @@ public class MainActivity extends Activity
 
         params.setMargins(0, 0, 0, 0);
 
-        //newParams.setMargins(0, 0, 0, 0);
-
         textView.setLayoutParams(params);
 
         fm = getFragmentManager();
@@ -216,27 +170,15 @@ public class MainActivity extends Activity
             {
 
                 if(fm.getBackStackEntryCount() == 0){
-//                    fm.beginTransaction().add(R.id.rl, textFrag)
-//                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-//                            .addToBackStack(textTag)
-//                            .commit();
                     infoOpen = false;
-
                 }
                 String cnt = "" + fm.getBackStackEntryCount();
-                //CharSequence text = "You pressed the text button!";
                 int duration = Toast.LENGTH_SHORT;
 
                 Toast toast = Toast.makeText(getApplication(), cnt, duration);
                 toast.show();
             }
         });
-
-//        compassFrag = new CompassFrag();
-//
-//        fm.beginTransaction().add(R.id.rl_comp, compassFrag)
-//                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-//                .commit();
 
         warningButton.setOnClickListener(new View.OnClickListener()
         {
@@ -245,19 +187,20 @@ public class MainActivity extends Activity
                 if (!warningOpen)
                 {
                     warningFrag = new WarningFrag();
+
+                    /* This is used for debugging, keeping as an example -Connor
                     CharSequence text = "You pressed the text button!";
                     int duration = Toast.LENGTH_SHORT;
 
                     Toast toast = Toast.makeText(getApplication(), text, duration);
                     toast.show();
+                    */
 
                     fm.beginTransaction().add(R.id.rl, warningFrag, warningTag)
                             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                            //.addToBackStack(warningTag)
                             .commit();
                     warningOpen = true;
                 }
-                //Toast.makeText("Hello!", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -282,9 +225,7 @@ public class MainActivity extends Activity
 
                         fm.beginTransaction().add(R.id.rl, infoFrag,infoTag)
                                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                                //.addToBackStack(infoTag)
                                 .commit();
-                        //Toast.makeText("Hello!", Toast.LENGTH_LONG).show();
                     }
                 }
             });
@@ -313,16 +254,6 @@ public class MainActivity extends Activity
 
         deptNames = getResources().getStringArray(R.array.dept_names);
         deptDesc = getResources().getStringArray(R.array.dept_desc);
-//        deptXVals = getResources().getStringArray(R.array.dept_xVal);
-//        deptYVals = getResources().getStringArray(R.array.dept_yVal);
-//        deptXVal = new float[deptXVals.length];
-//        deptYVal = new float[deptYVals.length];
-//
-//        for (int i = 0; i < deptYVal.length; i++)
-//        {
-//            deptXVal[i] = Float.parseFloat(deptXVals[i]);
-//            deptYVal[i] = Float.parseFloat(deptYVals[i]);
-//        }
 
         serveNames = getResources().getStringArray(R.array.serve_names);
         serveDesc = getResources().getStringArray(R.array.serve_desc);
@@ -410,14 +341,12 @@ public class MainActivity extends Activity
         });
 
         LinearLayout dummy = (LinearLayout) findViewById(R.id.dummyView);
-        //FrameLayout frameDummy=(FrameLayout)findViewById(R.id.frameDummy);
         customView = new CustomView(this);
         customView.setLayoutParams(new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT));
         dummy.addView(customView);
 
-        //frameDummy.addView(customView);
         bldgButton = (ImageButton) findViewById(R.id.bldgButton);
         bldgButton.setOnClickListener(new View.OnClickListener()
         {
@@ -445,6 +374,7 @@ public class MainActivity extends Activity
             }
         });
 
+        //Set up to interact with the "Dot" button, but has no content -Connor
         dotButton = (ImageButton)findViewById(R.id.dotBut);
         dotButton.setOnClickListener(new View.OnClickListener()
         {
@@ -454,13 +384,10 @@ public class MainActivity extends Activity
 
             }
         });
-        //textView = (TextView) findViewById(R.id.textView);
-        //dbView = (TextView) findViewById(R.id.debug);
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        //clearBitmaps(BMArraySize);
         super.onSaveInstanceState(outState);
     }
 
@@ -470,16 +397,13 @@ public class MainActivity extends Activity
         super.onDestroy();
     }
 
+    //No purpose, not sure why it's here -Connor
     private void clearFrags(){
-        //fm.
     }
-
-    //protected void on
 
     //Shannon
     private final LocationListener locationListener = new LocationListener()
     {
-
         @Override
         public void onLocationChanged(Location location)
         {
@@ -526,10 +450,6 @@ public class MainActivity extends Activity
 
     public void locationFound(Boolean val)
     {
-        //TextView myLocationText;
-        //myLocationText = (TextView) findViewById(R.id.myLocationText);
-        //String latLongString = "No location found";
-        //myLocationText.setText(latLongString);
         locationFound = val;
     }
 
@@ -547,7 +467,6 @@ public class MainActivity extends Activity
     }
 
     public void createBitmaps(int numOfBitmaps){
-        //System.gc();
         if(!created)
         {
             markerArray = new Bitmap[numOfBitmaps];
@@ -578,35 +497,15 @@ public class MainActivity extends Activity
                 {
                     grow = true;
                 }
-
-               // markerScaled = Bitmap.createScaledBitmap(marker, (int) markerSize, (int) markerSize, true);
                 markerArray[j] = Bitmap.createScaledBitmap(marker, (int) markerSize, (int) markerSize, true);
                 markerSizeArray[j] = markerSize;
-                //markerScaled.recycle();
             }
             marker.recycle();
         }
         created = true;
-        //System.gc();
-
     }
 
     public void setPosition(){
-
-//        double latMin = 39.03070; //39.03085486396841;
-//        double latMax = 39.03093; //39.03087636904064;
-//        double lngMin = -95.7531; //-95.75338172265077;
-//        double lngMax = -95.7539; //-95.75346807625606;
-
-        // GOOD:
-//        double latMin = 39.029330;
-//        double latMax = 39.037764;
-//        double lngMin = -95.696309;
-//        double lngMax = -95.707102;
-
-        //New top left: 39.037157, -95.707268
-        //and new bottom right: 39.029503, -95.696138
-
         double latMin = 39.029503;
         double latMax = 39.037157;
         double lngMin = -95.696138;
@@ -622,22 +521,18 @@ public class MainActivity extends Activity
 
             if (lat < latMin){
                 outOfBounds = true;
-                //Log.d("1","!!!!!!!");
                 return;
             }
             if (lat > latMax){
                 outOfBounds = true;
-                //Log.d("2","!!!!!!!");
                 return;
             }
             if (lng > lngMin){
                 outOfBounds = true;
-                //Log.d("3","!!!!!!");
                 return;
             }
             if (lng < lngMax){
                 outOfBounds = true;
-                //Log.d("4","!!!!!!!!");
                 return;
             }
             outOfBounds = false;
@@ -675,47 +570,17 @@ public class MainActivity extends Activity
         private float scale = 1f;
         private float left = 0f, top = 0f;
 
-        //private Bitmap bitmap = null;
-        //private Bitmap marker = null;
-        //private Bitmap markerScaled = null;
-        //private Bitmap[] markerArray;
-
-        //private Bitmap markerScaled1 = null;
-
         private Paint paint1, paint2, paint3, paint4;
         private float width;
         private float height;
         private int w;
         private int h;
 
-        //int cTop = 0;
-        //int cLeft = 0;
-
-        //float markerSize = 100;
-
-//        boolean startOK = false;
-//        boolean grow = true;
-
         public CustomView(Context c)
         {
             super(c);
             startLocation();
-            //worker.start();
-            //dotThrob();
-
-            //bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.wu_map);
-            //bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.wumap_photoshoped3);
             bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.wumap_photoshoped3);
-//
-//            Log.d("", "" + bitmap.getWidth());
-//
-            //BitmapFactory.Options options = new BitmapFactory.Options();
-            //options.inMutable = true;
-            //options.inScaled = true;
-
-            //marker = BitmapFactory.decodeResource(getResources(), R.drawable.ich_sm1, options);
-//
-            //Log.d("markerscaled", "Size:   " + markerScaled.getWidth());
             setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
             scaleDetector = new ScaleGestureDetector(c
                     , new ScaleGestureDetector.SimpleOnScaleGestureListener()
@@ -755,6 +620,7 @@ public class MainActivity extends Activity
         }
 
 
+        //Might need to add permission check here -Connor
         private void startLocation()
         {
             LocationManager locationManager;
@@ -787,8 +653,6 @@ public class MainActivity extends Activity
 
         }
 
-
-
         public void onDraw(Canvas c)
         {
             super.onDraw(c);
@@ -797,7 +661,6 @@ public class MainActivity extends Activity
             height = getHeight();
             c.translate(left, top);
             c.scale(scale, scale);
-            //c.scale(scale+canCtr, scale+canCtr);
             int bitmapWidth = bitmap.getWidth();
             int bitmapHeight = bitmap.getHeight();
             h = (int) (width * bitmapHeight) / bitmapWidth;
@@ -806,15 +669,6 @@ public class MainActivity extends Activity
             int yoff = 0;
             float startX;
             float startY;
-
-//            cLeft = c.getClipBounds().left;
-//            cTop = c.getClipBounds().top;
-//
-//            cvLeft = getLeft();
-//            cvRight = getLeft() + getWidth();
-//            cvTop = getBottom() - getHeight();
-//            cvBottom = getBottom();
-
 
             if (w >= width)
             {
@@ -841,11 +695,6 @@ public class MainActivity extends Activity
 
                 c.drawCircle(startX, startY, 8f, paint1);
                 c.drawCircle(startX, startY, 8f, paint4);
-//        dotThrob(startX*2, startY*2);
-//        float tw=paint2.measureText(bldgNames[bldgSel]);
-//        c.drawRect(startX-tw/2-3,startY+20,startX+tw/2+3,startY+46,paint3);
-//        c.drawText(bldgNames[bldgSel],startX-tw/2,startY+40,paint2);
-//        c.drawRect(startX-tw/2-3,startY+20,startX+tw/2+3,startY+46,paint4);
             }
 
             if (w >= width)
@@ -861,29 +710,6 @@ public class MainActivity extends Activity
             }
 
             c.save();
-//            if(grow){
-//                markerSize = markerSize + (float).34;}
-//            else{
-//                markerSize = markerSize - (float).34;}
-//
-//            if(markerSize > 70){
-//                grow = false;
-//            }
-//            if(markerSize < 30){
-//                grow = true;
-//            }
-
-            //markerScaled1 = Bitmap.createScaledBitmap(marker, 15, 15, true);
-
-            //markerScaled = Bitmap.createScaledBitmap(marker, (int) markerSize, (int) markerSize, true);
-
-            //markerScaled.setWidth((int) markerSize);
-            //markerScaled.setHeight((int) markerSize);
-
-            //markerScaled.setDensity(1020);
-
-            //c.drawBitmap(markerScaled, newXf - (markerSize / 2), newYf - (markerSize/2), null);
-
             if(!outOfBounds && locationFound)
             {
                 c.drawBitmap(markerArray[BMCtr], newXf - (markerSizeArray[BMCtr] / 2), newYf - (markerSizeArray[BMCtr] / 2), null);
@@ -893,10 +719,7 @@ public class MainActivity extends Activity
                 warningButton.animate().scaleX(0);
                 warningButton.setVisibility(View.VISIBLE);
                 warningButton.animate().scaleX(1).setDuration(500);
-                //warningButton.setVisibility(View.GONE);
             }
-
-            //markerArray[BMCtr].recycle();
 
             if (cycleBitmapUp)
             {
@@ -913,30 +736,10 @@ public class MainActivity extends Activity
             {
                 cycleBitmapUp = true;
             }
-
-
-//            BMCtr++;
-//
-//            if(BMCtr == BMArraySize){
-//                BMCtr = 0;
-//            }
-
-            //c.drawBitmap(markerScaled1, (float)200, (float)200, null);
-
-
-            //markerScaled.recycle();
-            //markerScaled.
             c.restore();
 
             startOK = true;
-
-            // dbView.setText("canCtr: " + canCtr + " OOB: " + outOfBounds + "  cLeft :" + cLeft + "  cTop:  " + cTop
-            //+ " newXf: " + newXf + " newYf: " + newYf
-            //+ " width: " + width + " height: " + height + " w: " + w + " h: " + h);
-
             invalidate();
-            //System.gc();
-
         }
 
         public boolean onTouchEvent(MotionEvent e)
@@ -953,8 +756,6 @@ public class MainActivity extends Activity
                     xo = e.getX() - left;
                     yo = e.getY() - top;
                     moving = true;
-                    //          textView.setText("");
-                    //          bldgSel=-1;
                     int xoff = 0;
                     int yoff = 0;
                     for (int i = 0; i < bldgX.length; i++)
@@ -983,11 +784,6 @@ public class MainActivity extends Activity
                                 textView.setSingleLine(false);
                                 textView.setLines(2);
                                 textView.setGravity(Gravity.START);
-
-                                //newParams.setMargins(0, 0, px, 0);
-
-                                //textView.setLayoutParams(newParams);
-
                                 infoButton.setVisibility(View.VISIBLE);
 
                                 break;
@@ -1016,13 +812,7 @@ public class MainActivity extends Activity
                                 textView.setSingleLine(false);
                                 textView.setLines(2);
                                 textView.setGravity(Gravity.START);
-
-                                //newParams.setMargins(0, 0, px, 0);
-
-                                //textView.setLayoutParams(newParams);
-
                                 infoButton.setVisibility(View.VISIBLE);
-
                                 break;
                             }
                         }

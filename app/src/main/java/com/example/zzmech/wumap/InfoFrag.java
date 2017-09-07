@@ -63,23 +63,9 @@ public class InfoFrag extends Fragment
         titleText.setTypeface(boldFace);
         args = this.getArguments();
 
-        //caller = args.getString("caller");
         selectedInt = args.getInt("value");
         selName = args.getString("name");
         description = args.getString("description");
-
-//        imgRes = new int[bldgPhotos.length];
-//
-//        for (int i = 0; i < imgRes.length; i++)
-//        {
-//            imgRes[i] = Integer.parseInt(bldgPhotos[i]);
-//        }
-
-
-
-        //usedRes = imgRes[selectedInt];
-        //usedRes = bldgPhotos[selectedInt];
-        //int dummy = usedRes;
 
         titleText.setText(selName);
         descText.setText(description);
@@ -96,9 +82,6 @@ public class InfoFrag extends Fragment
                                     {
                                         CharSequence text = "You pressed the info x!";
                                         int duration = Toast.LENGTH_SHORT;
-
-                                        //Toast toast = Toast.makeText(getActivity(), text, duration);
-                                        //toast.show();
 
                                         Log.d("CLICK", "XX");
 
