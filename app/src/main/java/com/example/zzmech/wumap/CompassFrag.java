@@ -20,8 +20,7 @@ import android.widget.TextView;
 import static android.content.Context.SENSOR_SERVICE;
 
 
-public class CompassFrag extends Fragment implements SensorEventListener
-{
+public class CompassFrag extends Fragment implements SensorEventListener {
 
     private ImageView image;
 
@@ -36,31 +35,24 @@ public class CompassFrag extends Fragment implements SensorEventListener
     // TODO: Rename and change types of parameters
 
 
-    public CompassFrag()
-    {
+    public CompassFrag() {
         // Required empty public constructor
     }
 
 
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent,
-                             Bundle savedInstanceState)
-    {
-        // Inflate the layout for this fragment
+                             Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_compass, parent, false);
 
         image = (ImageView) v.findViewById(R.id.imageViewCompass);
-
-        // TextView that will tell the user what degree is he heading
-        //tvHeading = (TextView) v.findViewById(R.id.tvHeading);
 
         // initialize your android device sensor capabilities
         mSensorManager = (SensorManager) getActivity().getSystemService(SENSOR_SERVICE);
@@ -91,8 +83,6 @@ public class CompassFrag extends Fragment implements SensorEventListener
         // get the angle around the z-axis rotated
         float degree = Math.round(event.values[0]);
 
-//        tvHeading.setText("Heading: " + Float.toString(degree) + " degrees");
-
         // create a rotation animation (reverse turn degree degrees)
         RotateAnimation ra = new RotateAnimation(
                 currentDegree,
@@ -110,7 +100,6 @@ public class CompassFrag extends Fragment implements SensorEventListener
         // Start the animation
         image.startAnimation(ra);
         currentDegree = -degree;
-
     }
 
     @Override

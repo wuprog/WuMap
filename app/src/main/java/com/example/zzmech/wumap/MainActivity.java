@@ -36,8 +36,7 @@ import static com.example.zzmech.wumap.R.id.info;
 import static com.example.zzmech.wumap.R.id.text;
 import static java.security.AccessController.getContext;
 
-public class MainActivity extends Activity
-{
+public class MainActivity extends Activity {
     private CustomView customView;
     private LinearLayout layout;
     private TextView textView;
@@ -66,45 +65,21 @@ public class MainActivity extends Activity
 
     private String[] deptNames;
     private String[] deptDesc;
-    private int[] deptBldg = {2, 0, 16, 16, 13, 16, 2, 4, 13, 7, 2, 15, 7, 13, 13, 6, 13, 16, 7, 7, 2, 7, 6};    private String[] serveNames;
+    private int[] deptBldg = {2, 0, 16, 16, 13, 16, 2, 4, 13, 7, 2, 15, 7, 13, 13, 6, 13, 16, 7, 7, 2, 7, 6};
+    private String[] serveNames;
     private String[] serveDesc;
     private int[] serveBldg = {12, 12};
     private int bldgSel = -1;
-    TextView myLocationText;
+    private TextView myLocationText;
 
-    ImageButton hamBurgMenu;
-
-    //private float cvLeft;
-    //private float cvRight;
-    //private float cvTop;
-    //private float cvBottom;
+    private ImageButton hamBurgMenu;
     private ImageButton dotButton;
 
-    //Shannon
-    //private Button gpsButton;
-    //private GridView gpsView;
-    //Animation animScale;
     Location globalLoc;
-    //private TextView dbView;
-    //ImageView imV;
     float newXf;
     float newYf;
     boolean outOfBounds;
     boolean locationFound;
-    //float finalXf;
-    //float finalYf;
-    //int absViewX;
-    //int absViewY;
-
-    //float markerSize = 100;
-
-    //private Bitmap bitmap = null;
-    //private Bitmap marker = null;
-    //private Bitmap markerScaled = null;
-    //private Bitmap markerScaled1 = null;
-
-    //BitmapFactory.Options options = new BitmapFactory.Options();
-
     private Bitmap bitmap = null;
     private Bitmap marker = null;
     private Bitmap markerScaled = null;
@@ -117,8 +92,6 @@ public class MainActivity extends Activity
     double resizer = .32;//.31
     int BMArraySize = 100;//200
     int BMCtr = 0;
-
-    //private BitmapDrawable bd;
 
     boolean created = false;
 
@@ -139,30 +112,21 @@ public class MainActivity extends Activity
 
     private RelativeLayout relativeLayout;
 
-    public void setInfoOpen(Boolean infoOpen)
-    {
+    public void setInfoOpen(Boolean infoOpen) {
         this.infoOpen = infoOpen;
     }
 
-    public void setWarningOpen(Boolean warningOpen)
-    {
+    public void setWarningOpen(Boolean warningOpen) {
         this.warningOpen = warningOpen;
     }
 
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         createBitmaps(BMArraySize);
 
         args = new Bundle();
-
-        //bd = new BitmapDrawable(getResources(), bitmap);
-
-       // mainText = (TextView) findViewById(R.id.main_text);
-        //Typeface face = Typeface.createFromAsset(getAssets(), "Asimov.otf");
-        //mainText.setTypeface(face);
 
         Typeface boldFace = Typeface.createFromAsset(getAssets(), "Gravity_Bold.otf");
         final Typeface face = Typeface.createFromAsset(getAssets(), "Gravity_Regular.otf");
@@ -178,19 +142,8 @@ public class MainActivity extends Activity
         infoTag = "info";
         warningTag = "warning";
 
-        //bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.wumap_photoshoped3);
-
-
-            //Log.d("", "" + bitmap.getWidth());
-            //BitmapFactory.Options options = new BitmapFactory.Options();
-            //options.inMutable = true;
-            //options.inScaled = true;
-
-        //marker = BitmapFactory.decodeResource(getResources(), R.drawable.ich_sm1, options);
-        //markerScaled = Bitmap.createScaledBitmap(marker, (int) markerSize, (int) markerSize, true);
-
-        warningButton = (ImageButton)findViewById(R.id.warningButton);
-        infoButton = (ImageButton)findViewById(R.id.infoButton);
+        warningButton = (ImageButton) findViewById(R.id.warningButton);
+        infoButton = (ImageButton) findViewById(R.id.infoButton);
 
         infoButton.setVisibility(View.GONE);
         params = new RelativeLayout.LayoutParams(
@@ -203,28 +156,18 @@ public class MainActivity extends Activity
 
         params.setMargins(0, 0, 0, 0);
 
-        //newParams.setMargins(0, 0, 0, 0);
-
         textView.setLayoutParams(params);
 
         fm = getFragmentManager();
 
-        fm.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener()
-        {
+        fm.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
             @Override
-            public void onBackStackChanged()
-            {
+            public void onBackStackChanged() {
 
-                if(fm.getBackStackEntryCount() == 0){
-//                    fm.beginTransaction().add(R.id.rl, textFrag)
-//                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-//                            .addToBackStack(textTag)
-//                            .commit();
+                if (fm.getBackStackEntryCount() == 0) {
                     infoOpen = false;
-
                 }
                 String cnt = "" + fm.getBackStackEntryCount();
-                //CharSequence text = "You pressed the text button!";
                 int duration = Toast.LENGTH_SHORT;
 
                 Toast toast = Toast.makeText(getApplication(), cnt, duration);
@@ -232,68 +175,53 @@ public class MainActivity extends Activity
             }
         });
 
-//        compassFrag = new CompassFrag();
-//
-//        fm.beginTransaction().add(R.id.rl_comp, compassFrag)
-//                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-//                .commit();
-
-        warningButton.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                if (!warningOpen)
-                {
+        warningButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (!warningOpen) {
                     warningFrag = new WarningFrag();
+
+                    /* This is used for debugging, keeping as an example -Connor
+                    CharSequence text = "You pressed the text button!";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(getApplication(), text, duration);
+                    toast.show();
+                    */
+
+                    fm.beginTransaction().add(R.id.rl, warningFrag, warningTag)
+                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                            .commit();
+                    warningOpen = true;
+                }
+            }
+        });
+
+        infoButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (!infoOpen) {
+                    infoFrag = new InfoFrag();
+                    infoOpen = true;
                     CharSequence text = "You pressed the text button!";
                     int duration = Toast.LENGTH_SHORT;
 
                     Toast toast = Toast.makeText(getApplication(), text, duration);
                     toast.show();
 
-                    fm.beginTransaction().add(R.id.rl, warningFrag, warningTag)
+                    args.putString("name", bldgNames[bldgSel]);
+                    args.putString("description", bldgDesc[bldgSel]);
+                    args.putInt("value", bldgSel);
+                    infoFrag.setArguments(args);
+
+                    fm.beginTransaction().add(R.id.rl, infoFrag, infoTag)
                             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                            //.addToBackStack(warningTag)
                             .commit();
-                    warningOpen = true;
                 }
-                //Toast.makeText("Hello!", Toast.LENGTH_LONG).show();
             }
         });
 
-            infoButton.setOnClickListener(new View.OnClickListener()
-            {
-                public void onClick(View v)
-                {
-                    if(!infoOpen)
-                    {
-                        infoFrag = new InfoFrag();
-                        infoOpen = true;
-                        CharSequence text = "You pressed the text button!";
-                        int duration = Toast.LENGTH_SHORT;
-
-                        Toast toast = Toast.makeText(getApplication(), text, duration);
-                        toast.show();
-
-                        args.putString("name", bldgNames[bldgSel]);
-                        args.putString("description", bldgDesc[bldgSel]);
-                        args.putInt("value", bldgSel);
-                        infoFrag.setArguments(args);
-
-                        fm.beginTransaction().add(R.id.rl, infoFrag,infoTag)
-                                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                                //.addToBackStack(infoTag)
-                                .commit();
-                        //Toast.makeText("Hello!", Toast.LENGTH_LONG).show();
-                    }
-                }
-            });
-
         hamBurgMenu = (ImageButton) findViewById(R.id.imageButton);
-        hamBurgMenu.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
+        hamBurgMenu.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "That button doesn't do anything, yet.", Toast.LENGTH_SHORT).show();
             }
         });
@@ -305,24 +233,13 @@ public class MainActivity extends Activity
         bldgX = new float[bldgXS.length];
         bldgY = new float[bldgYS.length];
 
-        for (int i = 0; i < bldgXS.length; i++)
-        {
+        for (int i = 0; i < bldgXS.length; i++) {
             bldgX[i] = Float.parseFloat(bldgXS[i]);
             bldgY[i] = Float.parseFloat(bldgYS[i]);
         }
 
         deptNames = getResources().getStringArray(R.array.dept_names);
         deptDesc = getResources().getStringArray(R.array.dept_desc);
-//        deptXVals = getResources().getStringArray(R.array.dept_xVal);
-//        deptYVals = getResources().getStringArray(R.array.dept_yVal);
-//        deptXVal = new float[deptXVals.length];
-//        deptYVal = new float[deptYVals.length];
-//
-//        for (int i = 0; i < deptYVal.length; i++)
-//        {
-//            deptXVal[i] = Float.parseFloat(deptXVals[i]);
-//            deptYVal[i] = Float.parseFloat(deptYVals[i]);
-//        }
 
         serveNames = getResources().getStringArray(R.array.serve_names);
         serveDesc = getResources().getStringArray(R.array.serve_desc);
@@ -331,10 +248,8 @@ public class MainActivity extends Activity
 
         bldgListView = new ListView(this);
         bldgListView.setBackgroundColor(Color.parseColor("#002c5f"));
-        bldgListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-            {
+        bldgListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 bldgSel = position;
                 setContentView(layout);
                 textView.setText(bldgDesc[bldgSel]);
@@ -344,10 +259,8 @@ public class MainActivity extends Activity
 
         ArrayList<String> bldgList = new ArrayList<String>();
         for (int i = 0; i < bldgNames.length; i++) bldgList.add(bldgNames[i]);
-        bldgListView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, bldgList)
-        {
-            public View getView(int position, View convertView, ViewGroup parent)
-            {
+        bldgListView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, bldgList) {
+            public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
                 TextView tv = (TextView) view.findViewById(android.R.id.text1);
                 tv.setTextColor(Color.WHITE);
@@ -359,10 +272,8 @@ public class MainActivity extends Activity
 
         deptListView = new ListView(this);
         deptListView.setBackgroundColor(Color.parseColor("#002c5f"));
-        deptListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-            {
+        deptListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 bldgSel = deptBldg[position];
                 setContentView(layout);
                 textView.setText(deptDesc[position]);
@@ -371,10 +282,8 @@ public class MainActivity extends Activity
 
         ArrayList<String> deptList = new ArrayList<String>();
         for (int i = 0; i < deptNames.length; i++) deptList.add(deptNames[i]);
-        deptListView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, deptList)
-        {
-            public View getView(int position, View convertView, ViewGroup parent)
-            {
+        deptListView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, deptList) {
+            public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
                 TextView tv = (TextView) view.findViewById(android.R.id.text1);
                 tv.setTextColor(Color.WHITE);
@@ -385,10 +294,8 @@ public class MainActivity extends Activity
 
         serveListView = new ListView(this);
         serveListView.setBackgroundColor(Color.parseColor("#002c5f"));
-        serveListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-            {
+        serveListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 bldgSel = serveBldg[position];
                 setContentView(layout);
                 textView.setText(serveDesc[position]);
@@ -397,10 +304,8 @@ public class MainActivity extends Activity
 
         ArrayList<String> serveList = new ArrayList<String>();
         for (int i = 0; i < serveNames.length; i++) serveList.add(serveNames[i]);
-        serveListView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, serveList)
-        {
-            public View getView(int position, View convertView, ViewGroup parent)
-            {
+        serveListView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, serveList) {
+            public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
                 TextView tv = (TextView) view.findViewById(android.R.id.text1);
                 tv.setTextColor(Color.WHITE);
@@ -410,41 +315,35 @@ public class MainActivity extends Activity
         });
 
         LinearLayout dummy = (LinearLayout) findViewById(R.id.dummyView);
-        //FrameLayout frameDummy=(FrameLayout)findViewById(R.id.frameDummy);
         customView = new CustomView(this);
         customView.setLayoutParams(new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT));
         dummy.addView(customView);
 
-        //frameDummy.addView(customView);
         bldgButton = (ImageButton) findViewById(R.id.bldgButton);
-        bldgButton.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
+        bldgButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 setContentView(bldgListView);
             }
         });
 
         deptButton = (ImageButton) findViewById(R.id.deptButton);
-        deptButton.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
+        deptButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 setContentView(deptListView);
             }
         });
 
         serveButton = (ImageButton) findViewById(R.id.serveButton);
-        serveButton.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
+        serveButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 setContentView(serveListView);
             }
         });
 
+        //Set up to interact with the "Dot" button, but has no content -Connor
+        /*
         dotButton = (ImageButton)findViewById(R.id.dotBut);
         dotButton.setOnClickListener(new View.OnClickListener()
         {
@@ -454,65 +353,53 @@ public class MainActivity extends Activity
 
             }
         });
-        //textView = (TextView) findViewById(R.id.textView);
-        //dbView = (TextView) findViewById(R.id.debug);
+        */
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        //clearBitmaps(BMArraySize);
         super.onSaveInstanceState(outState);
     }
 
 
-    protected void onDestroy(){
+    protected void onDestroy() {
         clearBitmaps(BMArraySize);
         super.onDestroy();
     }
 
-    private void clearFrags(){
-        //fm.
+    //No purpose, not sure why it's here -Connor
+    private void clearFrags() {
     }
 
-    //protected void on
-
     //Shannon
-    private final LocationListener locationListener = new LocationListener()
-    {
-
+    private final LocationListener locationListener = new LocationListener() {
         @Override
-        public void onLocationChanged(Location location)
-        {
+        public void onLocationChanged(Location location) {
             updateWithNewLocation(location);
             Log.d("onLocationChanged!!!!", "");
         }
 
         @Override
-        public void onStatusChanged(String provider, int status, Bundle extras)
-        {
+        public void onStatusChanged(String provider, int status, Bundle extras) {
             Log.d("onStatusChanged!!!!", "");
         }
 
         @Override
-        public void onProviderEnabled(String provider)
-        {
+        public void onProviderEnabled(String provider) {
             Log.d("onProviderEnabled!!!!!", "");
         }
 
         @Override
-        public void onProviderDisabled(String provider)
-        {
+        public void onProviderDisabled(String provider) {
             Log.d("onProviderDisabled!!!!!", "");
         }
 
     };
 
-    private void updateWithNewLocation(Location location)
-    {
+    private void updateWithNewLocation(Location location) {
 
         String latLongString = "No location found";
-        if (location != null)
-        {
+        if (location != null) {
             double lat = location.getLatitude();
             double lng = location.getLongitude();
 
@@ -524,20 +411,13 @@ public class MainActivity extends Activity
         myLocationText.setText("Your current Position is:\n" + latLongString);
     }
 
-    public void locationFound(Boolean val)
-    {
-        //TextView myLocationText;
-        //myLocationText = (TextView) findViewById(R.id.myLocationText);
-        //String latLongString = "No location found";
-        //myLocationText.setText(latLongString);
+    public void locationFound(Boolean val) {
         locationFound = val;
     }
 
-    public void clearBitmaps(int numOfBitmaps){
-        if(created)
-        {
-            for (int j = 0; j < numOfBitmaps; j++)
-            {
+    public void clearBitmaps(int numOfBitmaps) {
+        if (created) {
+            for (int j = 0; j < numOfBitmaps; j++) {
                 markerArray[j].recycle();
                 markerSizeArray[j] = 0;
             }
@@ -546,10 +426,8 @@ public class MainActivity extends Activity
         bitmap.recycle();
     }
 
-    public void createBitmaps(int numOfBitmaps){
-        //System.gc();
-        if(!created)
-        {
+    public void createBitmaps(int numOfBitmaps) {
+        if (!created) {
             markerArray = new Bitmap[numOfBitmaps];
             markerSizeArray = new float[numOfBitmaps];
 
@@ -560,53 +438,28 @@ public class MainActivity extends Activity
             marker = BitmapFactory.decodeResource(getResources(), R.drawable.ich_sm1, options);
             marker = Bitmap.createScaledBitmap(marker, 50, 50, true);
 
-            for (int j = 0; j < numOfBitmaps; j++)
-            {
-                if (grow)
-                {
+            for (int j = 0; j < numOfBitmaps; j++) {
+                if (grow) {
                     markerSize = markerSize + (float) resizer;
-                } else
-                {
+                } else {
                     markerSize = markerSize - (float) resizer;
                 }
 
-                if (markerSize > 94)
-                {
+                if (markerSize > 94) {
                     grow = false;
                 }
-                if (markerSize < 30)
-                {
+                if (markerSize < 30) {
                     grow = true;
                 }
-
-               // markerScaled = Bitmap.createScaledBitmap(marker, (int) markerSize, (int) markerSize, true);
                 markerArray[j] = Bitmap.createScaledBitmap(marker, (int) markerSize, (int) markerSize, true);
                 markerSizeArray[j] = markerSize;
-                //markerScaled.recycle();
             }
             marker.recycle();
         }
         created = true;
-        //System.gc();
-
     }
 
-    public void setPosition(){
-
-//        double latMin = 39.03070; //39.03085486396841;
-//        double latMax = 39.03093; //39.03087636904064;
-//        double lngMin = -95.7531; //-95.75338172265077;
-//        double lngMax = -95.7539; //-95.75346807625606;
-
-        // GOOD:
-//        double latMin = 39.029330;
-//        double latMax = 39.037764;
-//        double lngMin = -95.696309;
-//        double lngMax = -95.707102;
-
-        //New top left: 39.037157, -95.707268
-        //and new bottom right: 39.029503, -95.696138
-
+    public void setPosition() {
         double latMin = 39.029503;
         double latMax = 39.037157;
         double lngMin = -95.696138;
@@ -615,29 +468,24 @@ public class MainActivity extends Activity
         newXf = 0;
         newYf = 0;
 
-        if (globalLoc != null)
-        {
+        if (globalLoc != null) {
             double lat = globalLoc.getLatitude();
             double lng = globalLoc.getLongitude();
 
-            if (lat < latMin){
+            if (lat < latMin) {
                 outOfBounds = true;
-                //Log.d("1","!!!!!!!");
                 return;
             }
-            if (lat > latMax){
+            if (lat > latMax) {
                 outOfBounds = true;
-                //Log.d("2","!!!!!!!");
                 return;
             }
-            if (lng > lngMin){
+            if (lng > lngMin) {
                 outOfBounds = true;
-                //Log.d("3","!!!!!!");
                 return;
             }
-            if (lng < lngMax){
+            if (lng < lngMax) {
                 outOfBounds = true;
-                //Log.d("4","!!!!!!!!");
                 return;
             }
             outOfBounds = false;
@@ -645,42 +493,31 @@ public class MainActivity extends Activity
             double newX = map(lng, lngMax, lngMin, 0, 1);
             double newY = map(lat, latMax, latMin, 0, 1);
 
-            newXf = (float)newX;
-            newYf = (float)newY;
+            newXf = (float) newX;
+            newYf = (float) newY;
         }
     }
 
-    public double map(double num, double in_min, double in_max, double out_min, double out_max)
-    {
+    public double map(double num, double in_min, double in_max, double out_min, double out_max) {
         return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
     }
 
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
+    public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         return super.onOptionsItemSelected(item);
     }
 
-    private class CustomView extends ImageView
-    {
+    private class CustomView extends ImageView {
         private float xo, yo;
         private boolean moving = false;
         private ScaleGestureDetector scaleDetector;
         private float scale = 1f;
         private float left = 0f, top = 0f;
-
-        //private Bitmap bitmap = null;
-        //private Bitmap marker = null;
-        //private Bitmap markerScaled = null;
-        //private Bitmap[] markerArray;
-
-        //private Bitmap markerScaled1 = null;
 
         private Paint paint1, paint2, paint3, paint4;
         private float width;
@@ -688,40 +525,14 @@ public class MainActivity extends Activity
         private int w;
         private int h;
 
-        //int cTop = 0;
-        //int cLeft = 0;
-
-        //float markerSize = 100;
-
-//        boolean startOK = false;
-//        boolean grow = true;
-
-        public CustomView(Context c)
-        {
+        public CustomView(Context c) {
             super(c);
             startLocation();
-            //worker.start();
-            //dotThrob();
-
-            //bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.wu_map);
-            //bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.wumap_photoshoped3);
             bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.wumap_photoshoped3);
-//
-//            Log.d("", "" + bitmap.getWidth());
-//
-            //BitmapFactory.Options options = new BitmapFactory.Options();
-            //options.inMutable = true;
-            //options.inScaled = true;
-
-            //marker = BitmapFactory.decodeResource(getResources(), R.drawable.ich_sm1, options);
-//
-            //Log.d("markerscaled", "Size:   " + markerScaled.getWidth());
             setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
             scaleDetector = new ScaleGestureDetector(c
-                    , new ScaleGestureDetector.SimpleOnScaleGestureListener()
-            {
-                public boolean onScale(ScaleGestureDetector s)
-                {
+                    , new ScaleGestureDetector.SimpleOnScaleGestureListener() {
+                public boolean onScale(ScaleGestureDetector s) {
                     moving = false;
                     float oldScale = scale;
                     float width = getWidth();
@@ -755,8 +566,8 @@ public class MainActivity extends Activity
         }
 
 
-        private void startLocation()
-        {
+        //Might need to add permission check here -Connor
+        private void startLocation() {
             LocationManager locationManager;
             String svcName = Context.LOCATION_SERVICE;
             locationManager = (LocationManager) getSystemService(svcName);
@@ -771,33 +582,27 @@ public class MainActivity extends Activity
 
             String provider = locationManager.getBestProvider(criteria, true);
 
-            if (provider != null)
-            {
+            if (provider != null) {
                 Location l = locationManager.getLastKnownLocation(provider);
 
                 updateWithNewLocation(l);
                 locationFound(true);
 
                 locationManager.requestLocationUpdates(provider, 2000, 10, locationListener);
-            } else
-            {
+            } else {
                 Log.d("WE HAVE A NULL!!!!", "");
                 locationFound(false);
             }
 
         }
 
-
-
-        public void onDraw(Canvas c)
-        {
+        public void onDraw(Canvas c) {
             super.onDraw(c);
             if (bitmap == null) return;
             width = getWidth();
             height = getHeight();
             c.translate(left, top);
             c.scale(scale, scale);
-            //c.scale(scale+canCtr, scale+canCtr);
             int bitmapWidth = bitmap.getWidth();
             int bitmapHeight = bitmap.getHeight();
             h = (int) (width * bitmapHeight) / bitmapWidth;
@@ -807,33 +612,19 @@ public class MainActivity extends Activity
             float startX;
             float startY;
 
-//            cLeft = c.getClipBounds().left;
-//            cTop = c.getClipBounds().top;
-//
-//            cvLeft = getLeft();
-//            cvRight = getLeft() + getWidth();
-//            cvTop = getBottom() - getHeight();
-//            cvBottom = getBottom();
-
-
-            if (w >= width)
-            {
+            if (w >= width) {
                 yoff = (int) (height - h) / 2;
                 c.drawBitmap(bitmap, null, new Rect(0, yoff, (int) width, h + yoff), null);
-            } else
-            {
+            } else {
                 xoff = (int) (width - w) / 2;
                 c.drawBitmap(bitmap, null, new Rect(xoff, 0, w + xoff, (int) height), null);
             }
-            if (bldgSel != -1)
-            {
-                if (w >= width)
-                {
+            if (bldgSel != -1) {
+                if (w >= width) {
                     yoff = (int) (height - h) / 2;
                     startX = bldgX[bldgSel] * width;
                     startY = bldgY[bldgSel] * h + yoff;
-                } else
-                {
+                } else {
                     xoff = (int) (width - w) / 2;
                     startX = bldgX[bldgSel] * w + xoff;
                     startY = bldgY[bldgSel] * height;
@@ -841,131 +632,64 @@ public class MainActivity extends Activity
 
                 c.drawCircle(startX, startY, 8f, paint1);
                 c.drawCircle(startX, startY, 8f, paint4);
-//        dotThrob(startX*2, startY*2);
-//        float tw=paint2.measureText(bldgNames[bldgSel]);
-//        c.drawRect(startX-tw/2-3,startY+20,startX+tw/2+3,startY+46,paint3);
-//        c.drawText(bldgNames[bldgSel],startX-tw/2,startY+40,paint2);
-//        c.drawRect(startX-tw/2-3,startY+20,startX+tw/2+3,startY+46,paint4);
             }
 
-            if (w >= width)
-            {
+            if (w >= width) {
                 setPosition();
                 newXf = newXf * width;
                 newYf = newYf * h + yoff;
-            } else
-            {
+            } else {
                 setPosition();
                 newXf = newXf * w + xoff;
                 newYf = newYf * height;
             }
 
             c.save();
-//            if(grow){
-//                markerSize = markerSize + (float).34;}
-//            else{
-//                markerSize = markerSize - (float).34;}
-//
-//            if(markerSize > 70){
-//                grow = false;
-//            }
-//            if(markerSize < 30){
-//                grow = true;
-//            }
-
-            //markerScaled1 = Bitmap.createScaledBitmap(marker, 15, 15, true);
-
-            //markerScaled = Bitmap.createScaledBitmap(marker, (int) markerSize, (int) markerSize, true);
-
-            //markerScaled.setWidth((int) markerSize);
-            //markerScaled.setHeight((int) markerSize);
-
-            //markerScaled.setDensity(1020);
-
-            //c.drawBitmap(markerScaled, newXf - (markerSize / 2), newYf - (markerSize/2), null);
-
-            if(!outOfBounds && locationFound)
-            {
+            if (!outOfBounds && locationFound) {
                 c.drawBitmap(markerArray[BMCtr], newXf - (markerSizeArray[BMCtr] / 2), newYf - (markerSizeArray[BMCtr] / 2), null);
                 warningButton.setVisibility(View.GONE);
-            }
-            else{
+            } else {
                 warningButton.animate().scaleX(0);
                 warningButton.setVisibility(View.VISIBLE);
                 warningButton.animate().scaleX(1).setDuration(500);
-                //warningButton.setVisibility(View.GONE);
             }
 
-            //markerArray[BMCtr].recycle();
-
-            if (cycleBitmapUp)
-            {
+            if (cycleBitmapUp) {
                 BMCtr++;
-            } else
-            {
+            } else {
                 BMCtr--;
             }
-            if (BMCtr == BMArraySize-1)
-            {
+            if (BMCtr == BMArraySize - 1) {
                 cycleBitmapUp = false;
             }
-            if (BMCtr == 0)
-            {
+            if (BMCtr == 0) {
                 cycleBitmapUp = true;
             }
-
-
-//            BMCtr++;
-//
-//            if(BMCtr == BMArraySize){
-//                BMCtr = 0;
-//            }
-
-            //c.drawBitmap(markerScaled1, (float)200, (float)200, null);
-
-
-            //markerScaled.recycle();
-            //markerScaled.
             c.restore();
 
             startOK = true;
-
-            // dbView.setText("canCtr: " + canCtr + " OOB: " + outOfBounds + "  cLeft :" + cLeft + "  cTop:  " + cTop
-            //+ " newXf: " + newXf + " newYf: " + newYf
-            //+ " width: " + width + " height: " + height + " w: " + w + " h: " + h);
-
             invalidate();
-            //System.gc();
-
         }
 
-        public boolean onTouchEvent(MotionEvent e)
-        {
+        public boolean onTouchEvent(MotionEvent e) {
             scaleDetector.onTouchEvent(e);
             int action = e.getAction();
             int actionIndex = e.getActionIndex();
             float width = getWidth();
             float height = getHeight();
-            if (action == MotionEvent.ACTION_DOWN)
-            {
-                if (!moving && actionIndex == 0)
-                {
+            if (action == MotionEvent.ACTION_DOWN) {
+                if (!moving && actionIndex == 0) {
                     xo = e.getX() - left;
                     yo = e.getY() - top;
                     moving = true;
-                    //          textView.setText("");
-                    //          bldgSel=-1;
                     int xoff = 0;
                     int yoff = 0;
-                    for (int i = 0; i < bldgX.length; i++)
-                    {
-                        if (w >= width)
-                        {
+                    for (int i = 0; i < bldgX.length; i++) {
+                        if (w >= width) {
                             yoff = (int) (height - h) / 2;
                             float x1 = scale * width * bldgX[i];
                             float y1 = scale * (h * bldgY[i] + yoff);
-                            if (Math.abs(x1 - xo) < 50 && Math.abs(y1 - yo) < 50)
-                            {
+                            if (Math.abs(x1 - xo) < 50 && Math.abs(y1 - yo) < 50) {
                                 bldgSel = i;
                                 relativeLayout.setLayoutParams(params_rl);
                                 textView.setText(bldgDesc[bldgSel]);
@@ -983,22 +707,15 @@ public class MainActivity extends Activity
                                 textView.setSingleLine(false);
                                 textView.setLines(2);
                                 textView.setGravity(Gravity.START);
-
-                                //newParams.setMargins(0, 0, px, 0);
-
-                                //textView.setLayoutParams(newParams);
-
                                 infoButton.setVisibility(View.VISIBLE);
 
                                 break;
                             }
-                        } else
-                        {
+                        } else {
                             xoff = (int) (width - w) / 2;
                             float x1 = scale * (w * bldgX[i] + xoff);
                             float y1 = scale * height * bldgY[i];
-                            if (Math.abs(x1 - xo) < 50 && Math.abs(y1 - yo) < 50)
-                            {
+                            if (Math.abs(x1 - xo) < 50 && Math.abs(y1 - yo) < 50) {
                                 bldgSel = i;
                                 relativeLayout.setLayoutParams(params_rl);
                                 textView.setText(bldgDesc[bldgSel]);
@@ -1016,30 +733,21 @@ public class MainActivity extends Activity
                                 textView.setSingleLine(false);
                                 textView.setLines(2);
                                 textView.setGravity(Gravity.START);
-
-                                //newParams.setMargins(0, 0, px, 0);
-
-                                //textView.setLayoutParams(newParams);
-
                                 infoButton.setVisibility(View.VISIBLE);
-
                                 break;
                             }
                         }
                     }
                 }
-            } else if (action == MotionEvent.ACTION_UP && actionIndex == 0)
-            {
-                if (moving && actionIndex == 0)
-                {
+            } else if (action == MotionEvent.ACTION_UP && actionIndex == 0) {
+                if (moving && actionIndex == 0) {
                     left = e.getX() - xo;
                     top = e.getY() - yo;
                     clampLeftTop();
                     moving = false;
                 }
             }
-            if (moving && actionIndex == 0)
-            {
+            if (moving && actionIndex == 0) {
                 left = e.getX() - xo;
                 top = e.getY() - yo;
                 clampLeftTop();
@@ -1048,8 +756,7 @@ public class MainActivity extends Activity
             return true;
         }
 
-        private void clampLeftTop()
-        {
+        private void clampLeftTop() {
             float width = getWidth();
             float height = getHeight();
             if (left < (1f - scale) * width) left = (1f - scale) * width;

@@ -18,8 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class InfoFrag extends Fragment
-{
+public class InfoFrag extends Fragment {
     private TextView descText;
     private TextView titleText;
     private Button xButton;
@@ -33,29 +32,26 @@ public class InfoFrag extends Fragment
     private Bundle args;
     private TypedArray bldgPhotos;
 
-    public InfoFrag()
-    {
+    public InfoFrag() {
 
     }
 
 
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent,
-                             Bundle savedInstanceState)
-    {
+                             Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_info, parent, false);
 
         bldgPhotos = getResources().obtainTypedArray(R.array.bldg_photos);
 
-        titleText = (TextView)v.findViewById(R.id.titleText);
+        titleText = (TextView) v.findViewById(R.id.titleText);
 
-        descText = (TextView)v.findViewById(R.id.descText);
-        imageView = (ImageView)v.findViewById(R.id.photoView);
+        descText = (TextView) v.findViewById(R.id.descText);
+        imageView = (ImageView) v.findViewById(R.id.photoView);
 
         Typeface boldFace = Typeface.createFromAsset(getActivity().getAssets(), "Gravity_Bold.otf");
         Typeface face = Typeface.createFromAsset(getActivity().getAssets(), "Gravity_Regular.otf");
@@ -63,23 +59,9 @@ public class InfoFrag extends Fragment
         titleText.setTypeface(boldFace);
         args = this.getArguments();
 
-        //caller = args.getString("caller");
         selectedInt = args.getInt("value");
         selName = args.getString("name");
         description = args.getString("description");
-
-//        imgRes = new int[bldgPhotos.length];
-//
-//        for (int i = 0; i < imgRes.length; i++)
-//        {
-//            imgRes[i] = Integer.parseInt(bldgPhotos[i]);
-//        }
-
-
-
-        //usedRes = imgRes[selectedInt];
-        //usedRes = bldgPhotos[selectedInt];
-        //int dummy = usedRes;
 
         titleText.setText(selName);
         descText.setText(description);
@@ -87,30 +69,25 @@ public class InfoFrag extends Fragment
         imageView.setImageResource(bldgPhotos.getResourceId(selectedInt, -1));
 
         bldgPhotos.recycle();
-        xButton = (Button)v.findViewById(R.id.xButton1);
+        xButton = (Button) v.findViewById(R.id.xButton1);
 
-        xButton.setOnClickListener(new View.OnClickListener()
-                                {
-                                    @Override
-                                    public void onClick(View v)
-                                    {
-                                        CharSequence text = "You pressed the info x!";
-                                        int duration = Toast.LENGTH_SHORT;
+        xButton.setOnClickListener(new View.OnClickListener() {
+                                       @Override
+                                       public void onClick(View v) {
+                                           CharSequence text = "You pressed the info x!";
+                                           int duration = Toast.LENGTH_SHORT;
 
-                                        //Toast toast = Toast.makeText(getActivity(), text, duration);
-                                        //toast.show();
+                                           Log.d("CLICK", "XX");
 
-                                        Log.d("CLICK", "XX");
+                                           Fragment dummy;
 
-                                        Fragment dummy;
+                                           dummy = getActivity().getFragmentManager().findFragmentByTag("info");
 
-                                        dummy = getActivity().getFragmentManager().findFragmentByTag("info");
+                                           getActivity().getFragmentManager().beginTransaction().remove(dummy).commit();
 
-                                        getActivity().getFragmentManager().beginTransaction().remove(dummy).commit();
-
-                                        ((MainActivity)getActivity()).setInfoOpen(false);
-                                    }
-                                }
+                                           ((MainActivity) getActivity()).setInfoOpen(false);
+                                       }
+                                   }
         );
 
         return v;

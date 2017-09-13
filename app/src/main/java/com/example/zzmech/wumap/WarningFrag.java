@@ -19,8 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class WarningFrag extends Fragment
-{
+public class WarningFrag extends Fragment {
     private TextView textView;
     private TextView titleView;
     private Button intentBut;
@@ -28,58 +27,51 @@ public class WarningFrag extends Fragment
 
     final String action = Settings.ACTION_LOCATION_SOURCE_SETTINGS;
 
-    public WarningFrag()
-    {
+    public WarningFrag() {
 
     }
 
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent,
-                             Bundle savedInstanceState)
-    {
+                             Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_warning_frag, parent, false);
 
-        intentBut = (Button)v.findViewById(R.id.intentButton);
-        xBut = (Button)v.findViewById(R.id.xButton);
+        intentBut = (Button) v.findViewById(R.id.intentButton);
+        xBut = (Button) v.findViewById(R.id.xButton);
 
         Typeface boldFace = Typeface.createFromAsset(getActivity().getAssets(), "Gravity_Bold.otf");
         Typeface face = Typeface.createFromAsset(getActivity().getAssets(), "Gravity_Regular.otf");
 
-        textView = (TextView)v.findViewById(R.id.warning_text);
+        textView = (TextView) v.findViewById(R.id.warning_text);
         textView.setTypeface(face);
-        titleView = (TextView)v.findViewById(R.id.warning_title);
+        titleView = (TextView) v.findViewById(R.id.warning_title);
         titleView.setTypeface(boldFace);
 
-        intentBut.setOnClickListener(new View.OnClickListener()
-        {
+        intentBut.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 getActivity().startActivity(new Intent(action));
             }
         });
 
-        xBut.setOnClickListener(new View.OnClickListener()
-                                {
-                                    @Override
-                                    public void onClick(View v)
-                                    {
-                                        Fragment dummy;
+        xBut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment dummy;
 
-                                        dummy = getActivity().getFragmentManager().findFragmentByTag("warning");
+                dummy = getActivity().getFragmentManager().findFragmentByTag("warning");
 
-                                        getActivity().getFragmentManager().beginTransaction().remove(dummy).commit();
+                getActivity().getFragmentManager().beginTransaction().remove(dummy).commit();
 
-                                        ((MainActivity)getActivity()).setWarningOpen(false);
-                                    }
+                ((MainActivity) getActivity()).setWarningOpen(false);
+            }
 
 
-                                });
+        });
 
         return v;
     }
