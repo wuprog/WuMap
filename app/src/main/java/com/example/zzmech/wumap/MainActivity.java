@@ -356,6 +356,19 @@ public class MainActivity extends Activity {
         */
     }
 
+
+    //TODO
+    //Check if you're currently on MainActivity
+    //This logic will probably be flawed because I think you're always on MainActivity since
+    //it is the only activity -Connor
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        }
+        return true;
+    }
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
