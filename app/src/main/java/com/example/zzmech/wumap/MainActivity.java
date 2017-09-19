@@ -37,6 +37,9 @@ import static com.example.zzmech.wumap.R.id.text;
 import static java.security.AccessController.getContext;
 
 public class MainActivity extends Activity {
+
+    public static final int REQUEST_CODE_CALCULATE = 1;
+
     private CustomView customView;
     private LinearLayout layout;
     private TextView textView;
@@ -336,9 +339,19 @@ public class MainActivity extends Activity {
         });
 
         serveButton = (ImageButton) findViewById(R.id.serveButton);
+        /*
         serveButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 setContentView(serveListView);
+            }
+        });
+        */
+
+        //Intent example -Connor
+        serveButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = ServeActivity.newIntent(MainActivity.this);
+                startActivityForResult(i, REQUEST_CODE_CALCULATE);
             }
         });
 
