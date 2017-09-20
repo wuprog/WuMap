@@ -327,26 +327,22 @@ public class MainActivity extends Activity {
         bldgButton = (ImageButton) findViewById(R.id.bldgButton);
         bldgButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                setContentView(bldgListView);
+                //setContentView(bldgListView);
+                Intent i = ServeActivity.newIntent(MainActivity.this);
+                startActivityForResult(i, REQUEST_CODE_CALCULATE);
             }
         });
 
         deptButton = (ImageButton) findViewById(R.id.deptButton);
         deptButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                setContentView(deptListView);
+                //setContentView(deptListView);
+                Intent i = ServeActivity.newIntent(MainActivity.this);
+                startActivityForResult(i, REQUEST_CODE_CALCULATE);
             }
         });
 
         serveButton = (ImageButton) findViewById(R.id.serveButton);
-        /*
-        serveButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                setContentView(serveListView);
-            }
-        });
-        */
-
         //Intent example -Connor
         serveButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -354,7 +350,7 @@ public class MainActivity extends Activity {
                 startActivityForResult(i, REQUEST_CODE_CALCULATE);
             }
         });
-
+        
         //Set up to interact with the "Dot" button, but has no content -Connor
         /*
         dotButton = (ImageButton)findViewById(R.id.dotBut);
