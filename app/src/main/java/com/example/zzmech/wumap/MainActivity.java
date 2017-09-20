@@ -254,9 +254,7 @@ public class MainActivity extends Activity {
         bldgListView.setBackgroundColor(Color.parseColor("#002c5f"));
         bldgListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                bldgSel = position;
-                setContentView(layout);
-                textView.setText(bldgDesc[bldgSel]);
+
             }
         });
 

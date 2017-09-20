@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -26,13 +27,32 @@ public class BldgActivity extends AppCompatActivity {
     private int bldgSel = -1;
     private TextView textView;
     private LinearLayout layout;
-    private String[] bldgDesc;
     private String[] bldgNames;
+    private String[] bldgDesc;
+    private String[] bldgXS;
+    private String[] bldgYS;
+    private float[] bldgX;
+    private float[] bldgY;
 
     //Intent example -Connor
     //TODO Add ListViews in here and set the content
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        RelativeLayout.LayoutParams params;
+        LinearLayout.LayoutParams params_rl;
+
+        params = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT
+        );
+        params_rl = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                getResources().getDimensionPixelSize(R.dimen.text_height));
+
+        params.setMargins(0, 0, 0, 0);
+
+        textView.setLayoutParams(params);
 
         //Not sure about this yet :RIP:
         Typeface boldFace = Typeface.createFromAsset(getAssets(), "Gravity_Bold.otf");
@@ -43,15 +63,28 @@ public class BldgActivity extends AppCompatActivity {
         layout = (LinearLayout) findViewById(R.id.layout);
         bldgDesc = getResources().getStringArray(R.array.bldg_desc);
 
+
+        bldgNames = getResources().getStringArray(R.array.bldg_names);
+        bldgDesc = getResources().getStringArray(R.array.bldg_desc);
+        bldgXS = getResources().getStringArray(R.array.bldg_x);
+        bldgYS = getResources().getStringArray(R.array.bldg_y);
+        bldgX = new float[bldgXS.length];
+        bldgY = new float[bldgYS.length];
+
+        for (int i = 0; i < bldgXS.length; i++) {
+            bldgX[i] = Float.parseFloat(bldgXS[i]);
+            bldgY[i] = Float.parseFloat(bldgYS[i]);
+        }
+
         bldgListView = new ListView(this);
         bldgListView.setBackgroundColor(Color.parseColor("#002c5f"));
-        bldgListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                bldgSel = position;
+        //bldgListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            //public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //bldgSel = position;
                 setContentView(layout);
                 textView.setText(bldgDesc[bldgSel]);
-            }
-        });
+            //}
+        //});
 
 
         ArrayList<String> bldgList = new ArrayList<String>();
