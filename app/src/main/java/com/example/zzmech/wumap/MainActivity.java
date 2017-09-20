@@ -249,6 +249,7 @@ public class MainActivity extends Activity {
 
         layout = (LinearLayout) findViewById(R.id.layout);
 
+        /*
         bldgListView = new ListView(this);
         bldgListView.setBackgroundColor(Color.parseColor("#002c5f"));
         bldgListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -271,7 +272,7 @@ public class MainActivity extends Activity {
                 return view;
             }
         });
-
+        */
 
         deptListView = new ListView(this);
         deptListView.setBackgroundColor(Color.parseColor("#002c5f"));
@@ -350,7 +351,7 @@ public class MainActivity extends Activity {
                 startActivityForResult(i, REQUEST_CODE_CALCULATE);
             }
         });
-        
+
         //Set up to interact with the "Dot" button, but has no content -Connor
         /*
         dotButton = (ImageButton)findViewById(R.id.dotBut);
