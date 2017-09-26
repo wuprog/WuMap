@@ -81,7 +81,7 @@ public class BldgActivity extends AppCompatActivity {
         //bldgListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             //public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //bldgSel = position;
-                setContentView(layout);
+                //setContentView(layout);
                 textView.setText(bldgDesc[bldgSel]);
             //}
         //});
