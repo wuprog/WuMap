@@ -141,6 +141,7 @@ public class MainActivity extends Activity {
         textView.setTypeface(boldFace);
 
         infoOpen = false;
+
         warningOpen = false;
         infoTag = "info";
         warningTag = "warning";
@@ -221,14 +222,14 @@ public class MainActivity extends Activity {
                 }
             }
         });
-
+/*
         hamBurgMenu = (ImageButton) findViewById(R.id.imageButton);
         hamBurgMenu.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "That button doesn't do anything, yet.", Toast.LENGTH_SHORT).show();
             }
         });
-
+*/
         bldgNames = getResources().getStringArray(R.array.bldg_names);
         bldgDesc = getResources().getStringArray(R.array.bldg_desc);
         bldgXS = getResources().getStringArray(R.array.bldg_x);
@@ -271,7 +272,7 @@ public class MainActivity extends Activity {
             }
         });
         */
-
+//TODO MOVE TO DEPTACTIVITY
         deptListView = new ListView(this);
         deptListView.setBackgroundColor(Color.parseColor("#002c5f"));
         deptListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -281,7 +282,6 @@ public class MainActivity extends Activity {
                 textView.setText(deptDesc[position]);
             }
         });
-
         ArrayList<String> deptList = new ArrayList<String>();
         for (int i = 0; i < deptNames.length; i++) deptList.add(deptNames[i]);
         deptListView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, deptList) {
@@ -293,29 +293,6 @@ public class MainActivity extends Activity {
                 return view;
             }
         });
-
-        serveListView = new ListView(this);
-        serveListView.setBackgroundColor(Color.parseColor("#002c5f"));
-        serveListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                bldgSel = serveBldg[position];
-                setContentView(layout);
-                textView.setText(serveDesc[position]);
-            }
-        });
-
-        ArrayList<String> serveList = new ArrayList<String>();
-        for (int i = 0; i < serveNames.length; i++) serveList.add(serveNames[i]);
-        serveListView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, serveList) {
-            public View getView(int position, View convertView, ViewGroup parent) {
-                View view = super.getView(position, convertView, parent);
-                TextView tv = (TextView) view.findViewById(android.R.id.text1);
-                tv.setTextColor(Color.WHITE);
-                tv.setTypeface(face);
-                return view;
-            }
-        });
-
         LinearLayout dummy = (LinearLayout) findViewById(R.id.dummyView);
         customView = new CustomView(this);
         customView.setLayoutParams(new ViewGroup.LayoutParams(
@@ -349,19 +326,6 @@ public class MainActivity extends Activity {
                 startActivityForResult(i, REQUEST_CODE_CALCULATE);
             }
         });
-
-        //Set up to interact with the "Dot" button, but has no content -Connor
-        /*
-        dotButton = (ImageButton)findViewById(R.id.dotBut);
-        dotButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-
-            }
-        });
-        */
     }
 
     @Override
@@ -373,10 +337,6 @@ public class MainActivity extends Activity {
     protected void onDestroy() {
         clearBitmaps(BMArraySize);
         super.onDestroy();
-    }
-
-    //No purpose, not sure why it's here -Connor
-    private void clearFrags() {
     }
 
     //Shannon
