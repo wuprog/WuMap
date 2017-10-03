@@ -1,7 +1,7 @@
 ## [Overview](#overview)
 _<description goes here ...>_
 
-## [Background Context](#background) (Sync Pages, Sumo Boards, etc.)
+## [Background Context](#background)
 * Any relevant background context
 
 ## [Illustrations](#illustrations)
